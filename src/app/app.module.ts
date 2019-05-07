@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { 
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule
+ } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +27,6 @@ import { EventTypeComponent } from './components/admin/event-type/event-type.com
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
 
 const routes = [
-  { path: '**', children: 
-  [
-    { path: '', component: LandingComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent},
-  ]},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'admin', children: 
@@ -38,12 +39,18 @@ const routes = [
     { path: '', component: VacationComponent},
     { path: 'my-vacations', component: MyvacationsComponent},
     { path: 'new', component: NewComponent},
-    { path: '/:id', children: 
+    { path: ':id', children: 
     [
       { path: '', component: DetailComponent},
       { path: 'new-event', component: NewEventComponent},
       { path: 'detail/:id', component: EventDetailComponent},
     ]},
+  ]},
+  { path: '', children: 
+  [
+    { path: '', component: LandingComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'signup', component: SignupComponent},
   ]},
 ];
 
@@ -62,12 +69,18 @@ const routes = [
     DetailComponent,
     EventDetailComponent,
     AdminComponent,
-    EventTypeComponent
+    EventTypeComponent,
+    NewEventComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule, 
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
