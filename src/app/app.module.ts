@@ -25,6 +25,7 @@ import { EventDetailComponent } from './components/vacation/detail/event-detail/
 import { AdminComponent } from './components/admin/admin.component';
 import { EventTypeComponent } from './components/admin/event-type/event-type.component';
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
+import { VacationService } from './vacation.service';
 
 const routes = [
   { path: 'about', component: AboutComponent},
@@ -82,7 +83,10 @@ const routes = [
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    VacationService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
