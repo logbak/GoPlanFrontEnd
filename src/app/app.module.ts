@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { 
   MatButtonModule,
@@ -25,6 +26,7 @@ import { EventDetailComponent } from './components/vacation/detail/event-detail/
 import { AdminComponent } from './components/admin/admin.component';
 import { EventTypeComponent } from './components/admin/event-type/event-type.component';
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
+import { AuthService } from './services/auth.service';
 
 const routes = [
   { path: 'about', component: AboutComponent},
@@ -76,13 +78,16 @@ const routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
