@@ -1,4 +1,4 @@
-export interface AdminPortal {
+export interface EventType {
     ID?: number;
     Name: string;
 }
