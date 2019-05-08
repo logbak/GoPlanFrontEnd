@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { 
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ import { EventTypeComponent } from './components/admin/event-type/event-type.com
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
 import { AuthService } from './services/auth.service';
 import { AdminPortalService } from './services/admin-portal.service';
+import { EventTypeService } from './services/event-type.service';
 
 const routes = [
   { path: 'about', component: AboutComponent},
@@ -84,11 +86,12 @@ const routes = [
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
     AuthService,
-    AdminPortalService
+    EventTypeService
   ],
   bootstrap: [AppComponent]
 })

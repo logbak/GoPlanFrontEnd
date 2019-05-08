@@ -4,7 +4,7 @@
 <div> 
   <mat-table #table [dataSource]="dataSource">
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-    <mat-row *matRowDef="let row; coumns: columnNames;"></mat-row>
+    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
   </mat-table>
 
   <ng-container matColumnDef="details">
@@ -24,10 +24,11 @@
       <mat-cell *matCellDef="let Vacation">{{Vacation.Name}}</mat-cell>
     </ng-container>
 </div>
+
 <div> 
     <mat-table #table [dataSource]="dataSource">
       <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-      <mat-row *matRowDef="let row; coumns: columnNames;"></mat-row>
+      <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
     </mat-table>
   
     <ng-container matColumnDef="details">
