@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { 
   MatButtonModule,
@@ -26,6 +27,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EventTypeComponent } from './components/admin/event-type/event-type.component';
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
 import { VacationService } from './vacation.service';
+import { AuthService } from './services/auth.service';
 
 const routes = [
   { path: 'about', component: AboutComponent},
@@ -77,6 +79,7 @@ const routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
     MatButtonModule,
@@ -85,7 +88,7 @@ const routes = [
   ],
   providers: [
     VacationService
-
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
