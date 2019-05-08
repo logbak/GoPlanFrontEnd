@@ -27,6 +27,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { EventTypeComponent } from './components/admin/event-type/event-type.component';
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
 import { AuthService } from './services/auth.service';
+import { AdminPortalService } from './services/admin-portal.service';
 
 const routes = [
   { path: 'about', component: AboutComponent},
@@ -86,7 +87,8 @@ const routes = [
     MatInputModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AdminPortalService
   ],
   bootstrap: [AppComponent]
 })
