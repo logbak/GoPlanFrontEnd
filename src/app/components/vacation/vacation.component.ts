@@ -10,14 +10,14 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class VacationComponent implements OnInit {
 
-  columnNames = ['ID','UserID','CreatedDate','StartDate','EndDate','Name','Description','TotalCost','ImageSource','EventList','Attendees'];
+  columnNames = ['CreatedDate','StartDate','EndDate','Name','Description','ImageSource'];
 
   dataSource: MatTableDataSource<Vacation>
 
   constructor(private _vacationService: VacationService) { }
 
   ngOnInit() {
-    this._vacationService.getVacations().subscribe((vacations: Vacation[]) => {
+    this._vacationService.getVacationsByUser().subscribe((vacations: Vacation[]) => {
       this.dataSource = new MatTableDataSource<Vacation>(vacations);
     });
     
