@@ -6,7 +6,7 @@ const ApiUrl = 'http://goplanapi.azurewebsites.net/api/';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminPortalService {
+export class EventTypeService {
 
   constructor(private _http: HttpClient) { }
 
