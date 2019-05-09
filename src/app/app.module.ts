@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { 
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule,
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -87,7 +88,7 @@ const routes = [
     MatInputModule
   ],
   providers: [
-    VacationService
+    VacationService,
     AuthService
   ],
   bootstrap: [AppComponent]
