@@ -8,7 +8,7 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTableModule,
+  MatTableModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -85,7 +85,8 @@ const routes = [
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
     VacationService,
