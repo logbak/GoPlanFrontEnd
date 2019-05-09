@@ -23,7 +23,7 @@ export class EventDetailComponent implements OnInit {
     this._activatedRoute.paramMap
       .subscribe(routeData => 
       {
-        this._vacaEventService.getVacaEvent(routeData.get('id'))
+        this._vacaEventService.getVacaEvent(routeData.get('id2'))
           .subscribe((singleVacaEvent: VacaEvent) => 
           {
             this.vacaEvent = singleVacaEvent;
@@ -31,7 +31,7 @@ export class EventDetailComponent implements OnInit {
         );
       }
     );
-    this.vacaID = this._activatedRoute.snapshot.paramMap.get('vacation');
+    this.vacaID = this._activatedRoute.snapshot.paramMap.get('id');
     console.log(this.vacaID);
   }
 

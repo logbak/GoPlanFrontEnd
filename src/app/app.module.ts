@@ -48,7 +48,7 @@ const routes = [
     [
       { path: '', component: DetailComponent},
       { path: 'new-event', component: NewEventComponent},
-      { path: 'detail/:id', component: EventDetailComponent},
+      { path: 'detail/:id2', component: EventDetailComponent},
     ]},
   ]},
   { path: '', children: 
