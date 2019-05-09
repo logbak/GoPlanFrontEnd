@@ -29,6 +29,7 @@ import { EventTypeComponent } from './components/admin/event-type/event-type.com
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
 import { VacationService } from './vacation.service';
 import { AuthService } from './services/auth.service';
+import { VacaEventService } from './services/vaca-event.service';
 
 const routes = [
   { path: 'about', component: AboutComponent},
@@ -89,8 +90,9 @@ const routes = [
     MatTableModule
   ],
   providers: [
+    AuthService,
     VacationService,
-    AuthService
+    VacaEventService 
   ],
   bootstrap: [AppComponent]
 })
