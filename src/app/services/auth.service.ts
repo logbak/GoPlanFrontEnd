@@ -30,6 +30,7 @@ export class AuthService {
       `grant_type=password&username=${encodeURI(loginInfo.email)}&password=${encodeURI(loginInfo.password)}`;
       return this._http.post(`${Api_Url}/token`, str)
         .subscribe( (token: Token) => {
+          this.userInfo = token;
           localStorage.setItem('id_token', token.access_token);
           this.isLoggedIn.next(true);
           this._router.navigate(['/vacation']);

@@ -19,16 +19,16 @@ export class VacaEventService {
     return this._http.get(`${Api_Url}/VacaEvent/GetByVaca?vacaId=${vacaId}`, { headers: this.setHeader() });
   }
 
-  getVacaEvent(id: number) {
+  getVacaEvent(id: any) {
     return this._http.get(`${Api_Url}/VacaEvent/Get/${id}`, { headers: this.setHeader() });
   }
 
   createVacaEvent(vacaEvent: VacaEvent){
-    return this._http.post(`${Api_Url}/VacEvent/Post`, vacaEvent, { headers: this.setHeader() });
+    return this._http.post(`${Api_Url}/VacaEvent/Post`, vacaEvent, { headers: this.setHeader() });
   }
 
   updateVacaEvent(vacaEvent: VacaEvent){
-    return this._http.put(`${Api_Url}/VacEvent/Put`, vacaEvent, { headers: this.setHeader() });
+    return this._http.put(`${Api_Url}/VacaEvent/Put`, vacaEvent, { headers: this.setHeader() });
   }
 
   deleteVacaEvent(id: number) {
