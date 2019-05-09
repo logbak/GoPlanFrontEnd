@@ -2,7 +2,7 @@
 <p>Placeholder form:</p>
 <hr>
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="vacaEventForm">
+<form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacaEventForm">
   <div>
     <div>
       <mat-form-field>
@@ -39,6 +39,7 @@
         <input matInput placeholder="Cost" formControlName="Cost" type="number"/>
       </mat-form-field>
     </div>
+    <!-- <input formControlName="VacationID" type="number" value="{{this.vacaIdNumber}}"/> -->
   </div>
   <button mat-raised-button class="nav-btn" type="submit">Create Event</button>
 </form>

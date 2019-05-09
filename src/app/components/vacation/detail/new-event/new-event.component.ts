@@ -22,7 +22,6 @@ export class NewEventComponent implements OnInit {
   ngOnInit() {
     this.vacaID = this._route.snapshot.paramMap.get('id');
     this.vacaIdNumber = parseInt(this.vacaID, 10);
-    console.log(this.vacaID, this.vacaIdNumber);
   }
 
   createForm() {
@@ -39,15 +38,14 @@ export class NewEventComponent implements OnInit {
       Cost: new FormControl
     });
 
-    this.vacaEventForm.patchValue({VacationID: this.vacaIdNumber});
     this.vacaEventForm.patchValue({Cost: 0});   
   }
-
+  
   onSubmit() {
-    // this._vacaEventService.createVacaEvent(this.vacaEventForm.value)
-    //   .subscribe(data => { this._router.navigate([`/vacation/${this.vacaID}`]);
-    // });
-    console.log(this.vacaEventForm.value);
+    this.vacaEventForm.patchValue({VacationID: this.vacaIdNumber});
+    this._vacaEventService.createVacaEvent(this.vacaEventForm.value)
+      .subscribe(data => { this._router.navigate([`/vacation/${this.vacaID}`]);
+    });
   }
 
 }
