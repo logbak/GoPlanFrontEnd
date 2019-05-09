@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { 
   MatButtonModule,
@@ -82,12 +84,14 @@ const routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthService,
