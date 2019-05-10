@@ -1,7 +1,8 @@
 <h1>Admin Portal</h1>
 <hr>
 
-<div>
+<!-- This is the Vacation Table  -->
+<div class="VacationTable">
   <mat-table #table [dataSource]="dataSource1">
     <mat-header-row *matHeaderRowDef="columnNames1"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames1;"></mat-row>
@@ -26,7 +27,26 @@
   </mat-table>
 </div>
 
-<div>
+<!-- This is the EventType Table -->
+<div class="EventTypeTable">
+  <mat-table #table [dataSource]="dataSource">
+    <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+
+    <ng-container matColumnDef="EventTypeID">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">ID</mat-header-cell>
+      <mat-cell *matCellDef="let EventType"> {{EventType.ID}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="EventTypeName">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let EventType"> {{EventType.Name}} </mat-cell>
+    </ng-container>
+  </mat-table>
+</div>
+
+<!-- This is the Vacation Event Table -->
+<div class="VacaEventTable">
     <mat-table #table [dataSource]="dataSource2">
       <mat-header-row *matHeaderRowDef="columnNames2"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnNames2;"></mat-row>
@@ -55,22 +75,5 @@
     </ng-container>
     </mat-table>
   </div>
-
-<div class="EventTypeTable">
-  <mat-table #table [dataSource]="dataSource">
-    <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
-
-    <ng-container matColumnDef="EventTypeID">
-      <mat-header-cell *matHeaderCellDef class="matColumnSize">ID</mat-header-cell>
-      <mat-cell *matCellDef="let EventType"> {{EventType.ID}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="EventTypeName">
-      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-      <mat-cell *matCellDef="let EventType"> {{EventType.Name}} </mat-cell>
-    </ng-container>
-  </mat-table>
-</div>
 
 <app-footer></app-footer>

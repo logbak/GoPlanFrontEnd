@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { EventTypeService } from 'src/app/services/event-type.service';
 import { VacationService } from 'src/app/services/vacation.service';
 import { Vacation } from '../../models/Vacation';
+
+import { EventTypeService } from 'src/app/services/event-type.service';
 import { EventType } from '../../models/EventType';
+
 import { VacaEventService} from 'src/app/services/vaca-event.service';
 import { VacaEvent } from '../../models/VacaEvent';
+
 import { MatTableDataSource, MatTable } from '@angular/material';
 
 @Component({
