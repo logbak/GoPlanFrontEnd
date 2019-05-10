@@ -1,47 +1,53 @@
-<h1>New Event</h1>
-<p>Placeholder form:</p>
-<hr>
+<div class="sticker-bg">
+  <div id="mask">
+    <div class="content-container">
+      <h1>New Event</h1>
+      <p>Placeholder form:</p>
+      <hr>
 
-<form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacaEventForm">
-  <div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Name" formControlName="Name" type="Name" required/>
-      </mat-form-field>
+      <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacaEventForm">
+        <div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Name" formControlName="Name" type="Name" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Description" formControlName="Description" type="Description" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="LocationName" formControlName="LocationName" type="LocationName" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="ImageSource" formControlName="ImageSource" type="url" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="StartDate" formControlName="StartDate" type="datetime" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Cost" formControlName="Cost" type="number" />
+            </mat-form-field>
+          </div>
+          <!-- <input formControlName="VacationID" type="number" value="{{this.vacaIdNumber}}"/> -->
+        </div>
+        <button mat-raised-button class="nav-btn" type="submit">Create Event</button>
+      </form>
+
+      <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to Vacation</a>
     </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Description" formControlName="Description" type="Description"/>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="LocationName" formControlName="LocationName" type="LocationName" required/>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="ImageSource" formControlName="ImageSource" type="url"/>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="StartDate" formControlName="StartDate" type="datetime" required/>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime"/>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Cost" formControlName="Cost" type="number"/>
-      </mat-form-field>
-    </div>
-    <!-- <input formControlName="VacationID" type="number" value="{{this.vacaIdNumber}}"/> -->
   </div>
-  <button mat-raised-button class="nav-btn" type="submit">Create Event</button>
-</form>
-
-<a mat-button routerLink="/vacation/{{this.vacaID}}">Back to Vacation</a>
+</div>
