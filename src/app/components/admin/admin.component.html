@@ -1,18 +1,18 @@
 <h1>Admin Portal</h1>
-<hr> 
+<hr>
 
-<!-- <div> 
+<!-- <div>
   <mat-table #table [dataSource]="dataSource">
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
   </mat-table>
 
-   <ng-container matColumnDef="details">
-      <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-      <mat-cell *matCellDef="let Vacation" routerLink="/Vacations/detail/{{Vacation.ID}}"> 
-        <i class="material-icons">Vacations</i>
-      </mat-cell>
-  </ng-container> 
+  <ng-container matColumnDef="details">
+    <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+    <mat-cell *matCellDef="let Vacation" routerLink="/Vacations/detail/{{Vacation.ID}}">
+      <i class="material-icons">Vacations</i>
+    </mat-cell>
+  </ng-container>
 
   <ng-container matColumnDef="User">
     <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
@@ -20,33 +20,33 @@
   </ng-container>
 
   <ng-container matColumnDef="Vacation Name">
-      <mat-header-cell *matHeaderCellDef>Vacation Name</mat-header-cell>
-      <mat-cell *matCellDef="let Vacation">{{Vacation.Name}}</mat-cell>
-    </ng-container>
+    <mat-header-cell *matHeaderCellDef>Vacation Name</mat-header-cell>
+    <mat-cell *matCellDef="let Vacation">{{Vacation.Name}}</mat-cell>
+  </ng-container>
+</div> -->
+
+<div>
+  <mat-table #table [dataSource]="dataSource">
+    <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+  </mat-table>
+
+  <ng-container matColumnDef="details">
+    <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+    <mat-cell *matCellDef="let EventType" routerLink="/EventType/details/{{event-type.ID}}">
+      <i class="material-icons">EventType</i>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="EventTypeID">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let EventType">{{columnNames.EventTypeID}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="EventTypeName">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let EventType">{{EventType.Name}}</mat-cell>
+  </ng-container>
 </div>
 
-<div> 
-    <mat-table #table [dataSource]="dataSource">
-      <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
-    </mat-table>
-  
-    <ng-container matColumnDef="details">
-        <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-        <mat-cell *matCellDef="let EventType" routerLink="/EventType/details/{{event-type.ID}}"> 
-          <i class="material-icons">EventType</i>
-        </mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="EventTypeID">
-      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-      <mat-cell *matCellDef="let EventType">{{columnNames.EventTypeID}}</mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="EventTypeName">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *matCellDef="let EventType">{{EventType.Name}}</mat-cell>
-      </ng-container>
-  </div>
-
-<app-footer></app-footer> -->
+<app-footer></app-footer>

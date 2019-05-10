@@ -31,8 +31,7 @@ export class NewComponent implements OnInit {
       GooglePlaceID: new FormControl,
       ImageSource: new FormControl,
       StartDate: new FormControl,
-      EndDate: new FormControl,
-      Cost: new FormControl
+      EndDate: new FormControl
     });
 
     
@@ -41,7 +40,7 @@ export class NewComponent implements OnInit {
   onSubmit() {
     
     this._vacationService.createVacation(this.vacationForm.value)
-      .subscribe(data => { this._router.navigate([`/vacation/myvacations/`]);
+      .subscribe(data => { this._router.navigate([`/vacation/my-vacations/`]);
     });
   }
 

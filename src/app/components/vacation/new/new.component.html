@@ -2,7 +2,7 @@
 <p>Placeholder form:</p>
 <hr>
 
-<form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="newVacationForm">
+<form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacationForm">
   <div>
     <div>
       <mat-form-field>
@@ -34,15 +34,10 @@
         <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime"/>
       </mat-form-field>
     </div>
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Cost" formControlName="Cost" type="number"/>
-      </mat-form-field>
-    </div>
     
   </div>
   <button mat-raised-button class="nav-btn" type="submit">Create Vacation</button>
 </form>
 
-<a mat-button routerLink="/vacation/new/{{this.vacaID}}">Back to Vacation</a>
+<a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>
  
