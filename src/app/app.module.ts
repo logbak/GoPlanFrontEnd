@@ -27,7 +27,6 @@ import { NewComponent } from './components/vacation/new/new.component';
 import { DetailComponent } from './components/vacation/detail/detail.component';
 import { EventDetailComponent } from './components/vacation/detail/event-detail/event-detail.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { EventTypeComponent } from './components/admin/event-type/event-type.component';
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
 import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';

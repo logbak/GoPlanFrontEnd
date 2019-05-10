@@ -1,11 +1,11 @@
 <h1>Admin Portal</h1>
 <hr>
 
-<!-- <div>
+<div>
   <mat-table #table [dataSource]="dataSource">
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
-  </mat-table>
+  
 
   <ng-container matColumnDef="details">
     <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
@@ -23,7 +23,8 @@
     <mat-header-cell *matHeaderCellDef>Vacation Name</mat-header-cell>
     <mat-cell *matCellDef="let Vacation">{{Vacation.Name}}</mat-cell>
   </ng-container>
-</div> -->
+  </mat-table>
+</div>
 
 <div>
   <mat-table #table [dataSource]="dataSource">
