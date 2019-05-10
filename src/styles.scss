@@ -4,14 +4,72 @@
 
 body, html{
     margin: 0;
+    padding: 0;
+    height: 100%;  
+}
+
+.container-main{
+    min-height:100%;
+    position:relative;
     background-image: url(src/app/assets/sebastian-pena-lambarri-1218041-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100%;
+    font-family: 'Oswald', sans-serif; 
 }
 
-.container-main{
-    display: flex;
+.route-container{
+    padding: 5% 25% 10% 25%;
     justify-content: center;
+    font-family: 'Permanent Marker', cursive;
+    text-align: center;
+}
+
+.footer{
+    background-color: rgb(43, 43, 43);
+    padding: 0 10% 0 10%;
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    color: white;
+}
+    .footer p h1, h2, h3, h4, h5{
+        margin: 0;
+    }
+
+.mat-table{
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: larger;
+}
+
+.postcard-bg{
+    background-image: url(src/app/assets/GWR_series_1_postcard_back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.527);
+    padding: 25%;
+    font-size: xx-large;
+    color: saddlebrown;
+}
+
+.sticker-bg{
+    background-image: url(src/app/assets/travel-background-1481907912dGp.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.527);
+    border-radius: 25px;
+}
+
+#mask{
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.116);
+    padding: 5%;
+}
+
+.content-container{
+    border-radius: 25px;
+    background-color: seashell;
+    margin: 5%;
 }
