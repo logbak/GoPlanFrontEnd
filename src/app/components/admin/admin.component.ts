@@ -16,6 +16,6 @@ export class AdminComponent implements OnInit {
     this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) => { this.dataSource =  new MatTableDataSource<EventType>(eventtype)
     });
   }
-  columnNames = [ 'EventTypeID', 'EventTypeName']
+  columnNames = ['EventTypeID', 'EventTypeName']
   dataSource: MatTableDataSource<EventType>;
 }
