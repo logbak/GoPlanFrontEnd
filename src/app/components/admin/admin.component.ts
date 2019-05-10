@@ -34,9 +34,9 @@ export class AdminComponent implements OnInit {
    });
 
   }
-  columnNames = ['EventTypeID', 'EventTypeName']
-  columnNames1 = ['details', 'User', 'VacationName']
-  columnNames2 = ['EventID', 'VacationId', 'VacaEventName'];
+  columnNames = ['EventTypeID', 'EventTypeName', 'Update', 'Delete']
+  columnNames1 = [ 'User', 'VacationName', 'Update']
+  columnNames2 = ['EventID', 'VacationId', 'VacaEventName', 'Update'];
 
   dataSource: MatTableDataSource<EventType>; 
   dataSource1: MatTableDataSource<Vacation>;

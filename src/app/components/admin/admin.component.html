@@ -6,14 +6,6 @@
   <mat-table #table [dataSource]="dataSource1">
     <mat-header-row *matHeaderRowDef="columnNames1"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames1;"></mat-row>
-  
-
-  <ng-container matColumnDef="details">
-    <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-    <mat-cell *matCellDef="let Vacation" routerLink="/Vacations/detail/{{Vacation.ID}}">
-      <i class="material-icons">Vacations</i>
-    </mat-cell>
-  </ng-container>
 
   <ng-container matColumnDef="User">
     <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
@@ -24,6 +16,14 @@
     <mat-header-cell *matHeaderCellDef>Vacation Name</mat-header-cell>
     <mat-cell *matCellDef="let Vacation">{{Vacation.Name}}</mat-cell>
   </ng-container>
+
+  <ng-container matColumnDef="Update">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+      <mat-cell *matCellDef="let Vacation" routerLink="../vacation/{{Vacation.ID}}">
+        <i class="material-icons">Update</i>
+      </mat-cell>
+    </ng-container>
+
   </mat-table>
 </div>
 
@@ -42,6 +42,21 @@
       <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
       <mat-cell *matCellDef="let EventType"> {{EventType.Name}} </mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="Update">
+        <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+        <mat-cell *matCellDef="let Vacation" routerLink="/">
+          <i class="material-icons">Update</i>
+        </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="Delete">
+        <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+        <mat-cell *matCellDef="let Vacation" routerLink="/">
+          <i class="material-icons">Delete</i>
+        </mat-cell>
+      </ng-container>
+
   </mat-table>
 </div>
 
@@ -50,15 +65,7 @@
     <mat-table #table [dataSource]="dataSource2">
       <mat-header-row *matHeaderRowDef="columnNames2"></mat-header-row>
       <mat-row *matRowDef="let row; columns: columnNames2;"></mat-row>
-    
-  
-    <ng-container matColumnDef="details">
-      <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-      <mat-cell *matCellDef="let VacaEvent" routerLink="/">
-        <i class="material-icons">Events</i>
-      </mat-cell>
-    </ng-container>
-  
+
     <ng-container matColumnDef="EventID">
       <mat-header-cell *matHeaderCellDef>Event ID</mat-header-cell>
       <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.ID}}</mat-cell>
@@ -73,6 +80,14 @@
       <mat-header-cell *matHeaderCellDef>Event Name</mat-header-cell>
       <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
     </ng-container>
+      
+    <ng-container matColumnDef="Update">
+        <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+        <mat-cell *matCellDef="let VacaEvent" routerLink="../vacation/{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">
+          <i class="material-icons">Update</i>
+        </mat-cell>
+      </ng-container>
+    
     </mat-table>
   </div>
 
