@@ -29,7 +29,7 @@ import { EventDetailComponent } from './components/vacation/detail/event-detail/
 import { AdminComponent } from './components/admin/admin.component';
 import { EventTypeComponent } from './components/admin/event-type/event-type.component';
 import { NewEventComponent } from './components/vacation/detail/new-event/new-event.component';
-import { VacationService } from './vacation.service';
+import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
 
