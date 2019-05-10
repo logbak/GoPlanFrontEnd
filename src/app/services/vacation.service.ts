@@ -16,7 +16,7 @@ export class VacationService {
     return this._http.get(`${Api_Url}/Vacation/Get`, { headers: this.getHeaders() });
   }
 
-  getVacationGetByID(id:number) {
+  getVacationGetByID(id) {
     return this._http.get(`${Api_Url}/Vacation/Get/${id}`, { headers: this.getHeaders() });
   }
 

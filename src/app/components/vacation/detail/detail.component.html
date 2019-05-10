@@ -1,3 +1,51 @@
 <p>
-  detail works!
+  Vacation Detail
 </p>
+
+<div *ngIf="vacation">
+ 
+   <div>
+    <label for="">Vacation Created Date:</label>
+    <span>{{vacation.CreatedDate}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation Start Date:</label>
+    <span>{{vacation.StartDate}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation End Date:</label>
+    <span>{{vacation.EndDate}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation Name:</label>
+    <span>{{vacation.Name}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation Description:</label>
+    <span>{{vacation.Description}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation Total Cost:</label>
+    <span>{{vacation.Cost}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation Image Source:</label>
+    <span><img src="{{vacation.ImageSource}}" /></span>
+  </div>
+
+  <div>
+    <label for="">Vacation Event List:</label>
+    <span>{{vacation.ID}}</span>
+  </div>
+
+  <div>
+    <label for="">Vacation Attendees:</label>
+    <span>{{vacation.ID}}</span>
+  </div>
+</div>

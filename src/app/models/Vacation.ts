@@ -1,7 +1,7 @@
 export interface Vacation{
     ID?: number;
-    UserID: string;
-    CreatedDate: Date;
+    UserID?: string;
+    CreatedDate?: Date;
     StartDate: Date;
     EndDate: Date;
     Name: string;
