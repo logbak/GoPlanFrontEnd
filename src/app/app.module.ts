@@ -35,11 +35,7 @@ import { VacaEventService } from './services/vaca-event.service';
 const routes = [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'admin', children: 
-  [
-    {path: '', component: AdminComponent},
-    {path: 'event-type', component: EventTypeComponent},
-  ]},
+  { path: 'admin', component: AdminComponent},
   { path: 'vacation', children: 
   [
     { path: '', component: VacationComponent},
@@ -75,7 +71,6 @@ const routes = [
     DetailComponent,
     EventDetailComponent,
     AdminComponent,
-    EventTypeComponent,
     NewEventComponent
   ],
   imports: [
