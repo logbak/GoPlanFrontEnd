@@ -1,4 +1,4 @@
-import { Component, OnInit, createPlatformFactory } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Vacation } from 'src/app/models/Vacation';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VacationService } from 'src/app/services/vacation.service';
