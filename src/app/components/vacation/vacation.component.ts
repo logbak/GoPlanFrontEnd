@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { VacationService } from 'src/app/vacation.service';
+import { Vacation } from 'src/app/models/Vacation';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-vacation',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacationComponent implements OnInit {
 
-  constructor() { }
+  columnNames = ['CreatedDate','StartDate','EndDate','Name','Description','ImageSource'];
+
+  dataSource: MatTableDataSource<Vacation>
+
+  constructor(private _vacationService: VacationService) { }
 
   ngOnInit() {
+    this._vacationService.getVacationsByUser().subscribe((vacations: Vacation[]) => {
+      this.dataSource = new MatTableDataSource<Vacation>(vacations);
+    });
+    
   }
 
 }
