@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { VacaEvent } from '../models/VacaEvent';
 
 const Api_Url = 'http://goplanapi.azurewebsites.net/api'
+// const Api_Url = 'http://localhost:56865/api'
 
 @Injectable({
   providedIn: 'root'

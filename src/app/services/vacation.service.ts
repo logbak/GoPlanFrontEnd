@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const ApiUrl = 'http://goplanapi.azurewebsites.net/api'
+// const ApiUrl = 'http://localhost:56865/api'
 
 @Injectable()
 export class VacationService {

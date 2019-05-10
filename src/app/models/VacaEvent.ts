@@ -6,7 +6,7 @@ export interface VacaEvent {
     LocationName?: string;
     GooglePlaceId?: string;
     Name: string;
-    Description?: string;
+    Description: string;
     Imagesource?: string;
     StartDate: Date;
     EndDate?: Date;

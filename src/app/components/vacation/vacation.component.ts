@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VacationService } from 'src/app/vacation.service';
+import { VacationService } from 'src/app/services/vacation.service';
 import { Vacation } from 'src/app/models/Vacation';
 import { MatTableDataSource } from '@angular/material';
 
