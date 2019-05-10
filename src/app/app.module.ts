@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { 
   MatButtonModule,
   MatFormFieldModule,
@@ -89,13 +90,13 @@ const routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
   ],
   providers: [
     AuthService,
     EventTypeService,
     VacationService,
-    VacaEventService 
+    VacaEventService
   ],
   bootstrap: [AppComponent]
 })
