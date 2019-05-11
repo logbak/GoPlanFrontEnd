@@ -24,6 +24,12 @@ body, html{
     font-family: 'Permanent Marker', cursive;
 }
 
+@media (max-width: 1091px){
+    .route-container{
+        padding: 5% 5% 10% 5%;
+    }    
+}
+
 .footer{
     background-color: rgb(43, 43, 43);
     padding: 0 10% 0 10%;
@@ -76,4 +82,10 @@ body, html{
     background-color: seashell;
     margin: 5%;
     padding: 2%;
+}
+    .content-container h2{
+        text-align: center;
+    }
+.detail-edit{
+    padding: 0 5% 0 5% ;
 }
