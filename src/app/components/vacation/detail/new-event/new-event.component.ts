@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { VacaEventService } from 'src/app/services/vaca-event.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { __values } from 'tslib';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'app-new-event',
@@ -43,6 +45,7 @@ export class NewEventComponent implements OnInit {
   
   onSubmit() {
     this.vacaEventForm.patchValue({VacationID: this.vacaIdNumber});
+    this.vacaEventForm.patchValue({EventTypeID: 1});
     this._vacaEventService.createVacaEvent(this.vacaEventForm.value)
       .subscribe(data => { this._router.navigate([`/vacation/${this.vacaID}`]);
     });
