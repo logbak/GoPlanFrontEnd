@@ -28,37 +28,31 @@ export class DetailComponent implements OnInit {
                 });
               }
 
-  ngOnInit() { 
-  //   this._activatedRoute.paramMap.subscribe(routeData => {
-  //     this._vacationService.getVacationGetByID(routeData.get('id')).subscribe((singleVacation: Vacation) => {
-  //       this.vacation = singleVacation;
-  //     });
-  //   });
-  // }
+  ngOnInit() {
 }
 
 createForm() {
   this.editVacationForm = this._form.group({
-    Name: new FormControl(this.vacation.Name),
-    Description: new FormControl(this.vacation.Description),
-    ImageSource: new FormControl(this.vacation.ImageSource),
-    StartDate: new FormControl(this.vacation.StartDate),
-    EndDate: new FormControl(this.vacation.EndDate),
-    Attendees: new FormControl(this.vacation.Attendees)
-
-    // initialize second form for just EventList here?
+    Name: new FormControl(),
+    Description: new FormControl(),
+    ImageSource: new FormControl(),
+    StartDate: new FormControl(),
+    EndDate: new FormControl(),
+    Attendees: new FormControl()
   });
+
+  // initialize second form for just EventList here?
 }
 
 onSubmit(form){
-  console.log(this.vacation);
   const updateVacation: VacaEdit = {
     ID: this.vacation.ID,
     Name: form.value.Name,
     Description: form.value.Description,
     ImageSource: form.value.ImageSource,
     StartDate: form.value.StartDate,
-    EndDate: form.value.EndDate
+    EndDate: form.value.EndDate,
+    Attendees: form.value.Attendees
   };
   this._vacationService.updateVacation(updateVacation).subscribe(d => {
     this._router.navigate(['/my-vacations']);

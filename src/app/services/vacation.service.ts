@@ -27,15 +27,21 @@ export class VacationService {
   }
 
   createVacation(vacation: Vacation){
-    return this._http.post(`${Api_Url}/Vacation/Post`, vacation, { headers: this.getHeaders() });
+    return this._http.post(`${Api_Url}/Vacation/Post`, this.removeNulls(vacation), { headers: this.getHeaders() });
   }
 
   updateVacation(vacation: VacaEdit){
-    return this._http.put(`${Api_Url}/Vacation/Put`, vacation, { headers: this.getHeaders() });
+    return this._http.put(`${Api_Url}/Vacation/Put`, this.removeNulls(vacation), { headers: this.getHeaders() });
   }
 
   deleteVacation(id: number) {
     return this._http.delete(`${Api_Url}/Vacation/Delete/${id}`, { headers: this.getHeaders() });
+  }
+
+  removeNulls(anyModel){
+    Object.keys(anyModel).forEach((key) => (anyModel[key] == null) && delete anyModel[key]);
+    console.log(anyModel);
+    return anyModel;
   }
 
   private getHeaders() {
