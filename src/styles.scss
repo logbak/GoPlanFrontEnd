@@ -24,6 +24,12 @@ body, html{
     font-family: 'Permanent Marker', cursive;
 }
 
+.route-container-wide{
+    padding: 5% 10% 10% 10%;
+    justify-content: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
 @media (max-width: 1091px){
     .route-container{
         padding: 5% 5% 10% 5%;
@@ -42,7 +48,7 @@ body, html{
         margin: 0;
     }
 
-.mat-table{
+.mat-table, .mat-form-field{
     font-family: 'Nothing You Could Do', cursive;
     font-size: larger;
 }
