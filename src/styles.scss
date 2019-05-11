@@ -22,7 +22,18 @@ body, html{
     padding: 5% 25% 10% 25%;
     justify-content: center;
     font-family: 'Permanent Marker', cursive;
-    text-align: center;
+}
+
+.route-container-wide{
+    padding: 5% 10% 10% 10%;
+    justify-content: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+@media (max-width: 1091px){
+    .route-container{
+        padding: 5% 5% 10% 5%;
+    }    
 }
 
 .footer{
@@ -37,9 +48,13 @@ body, html{
         margin: 0;
     }
 
-.mat-table{
+.mat-table, .mat-form-field{
     font-family: 'Nothing You Could Do', cursive;
     font-size: larger;
+}
+
+.mat-form-field{
+    width: 100%;
 }
 
 .postcard-bg{
@@ -72,4 +87,11 @@ body, html{
     border-radius: 25px;
     background-color: seashell;
     margin: 5%;
+    padding: 2%;
+}
+    .content-container h2{
+        text-align: center;
+    }
+.detail-edit{
+    padding: 0 5% 0 5% ;
 }

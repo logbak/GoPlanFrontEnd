@@ -1,93 +1,96 @@
-<p>
-  Vacation Detail/Edit
-</p>
+<div class="sticker-bg">
+  <div id="mask">
+    <div class="content-container" *ngIf="vacation">
+      <h2>
+        Vacation Detail/Edit
+      </h2>
+      <br>
+      <hr>
 
-<div *ngIf="vacation">
- <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="editVacationForm">
-   
-     <div>
-       <mat-form-field>
-         <input matInput placeholder="CreatedDate" formControlName="CreatedDate" type="CreatedDate" required [value]="vacation.CreatedDate" />
-    <!-- <label for="">Vacation Created Date:</label>
-    <span>{{vacation.CreatedDate}}</span> -->
-  </mat-form-field>
-  </div>
+      <label for="">Date Created:</label>
+      <p>{{vacation.CreatedDate | date:'medium'}}</p>
+      <hr>
+
+      <div class="detail-edit">
+        <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(50% - 32px)">
+
+              <label for="">Start Date:</label>
+              <p>{{vacation.StartDate | date:'medium'}}</p>
+
+              <!-- add rest of details here -->
+
+              <a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>
+            </div>
+          </ng-container>
+
+          <ng-container>
+            <div fxFlex="0 1 calc(50% - 32px)">
+              <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="editVacationForm">
 
 
-    <div>
-      <mat-form-field>
-          <input matInput placeholder="StartDate" formControlName="StartDate" type="StartDate" required [value]="vacation.StartDate" />
-    <!-- <label for="">Vacation Start Date:</label>
-    <span>{{vacation.StartDate}}</span> -->
-  </mat-form-field>
-  </div>
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="StartDate" formControlName="StartDate" type="datetime-local" />
+                    <!-- <label for="">Vacation Start Date:</label>
+                        <span>{{vacation.StartDate}}</span> -->
+                  </mat-form-field>
+                </div>
 
 
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="EndDate" formControlName="EndDate" type="EndDate" required [value]="vacation.EndDate" />
-    <!-- <label for="">Vacation End Date:</label>
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime-local" />
+                    <!-- <label for="">Vacation End Date:</label>
     <span>{{vacation.EndDate}}</span> -->
-  </mat-form-field>
-  </div>
+                  </mat-form-field>
+                </div>
 
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="Name" formControlName="Name" type="Name" required [value]="vacation.Name" />
-    <!-- <label for="">Vacation Name:</label>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="Name" type="text" />
+                    <!-- <label for="">Vacation Name:</label>
     <span>{{vacation.Name}}</span> -->
-  </mat-form-field>
-  </div>
+                  </mat-form-field>
+                </div>
 
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="Description" formControlName="Description" type="Description" required [value]="vacation.Description" />
-    <!-- <label for="">Vacation Description:</label>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Description" formControlName="Description" type="text" />
+                    <!-- <label for="">Vacation Description:</label>
     <span>{{vacation.Description}}</span> -->
-  </mat-form-field>
-  </div>
+                  </mat-form-field>
+                </div>
 
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="Cost" formControlName="Cost" type="Cost" required [value]="vacation.Cost" />
-    <!-- <label for="">Vacation Total Cost:</label>
-    <span>{{vacation.Cost}}</span> -->
-  </mat-form-field>
-  </div>
 
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="ImageSource" formControlName="ImageSource" type="ImageSource" required [value]="vacation.ImageSource" />
-    <!-- <label for="">Vacation Image Source:</label>
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="ImageSource" formControlName="ImageSource" type="text" />
+                    <!-- <label for="">Vacation Image Source:</label>
     <span><img src="{{vacation.ImageSource}}" /></span> -->
-  </mat-form-field>
-  </div>
+                  </mat-form-field>
+                </div>
 
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="Event" formControlName="Event" type="Event" required [value]="vacation.Event" />
-    <!-- <label for="">Vacation Event List:</label>
+
+                <!-- to do: remake as input that adds to an existing array to submit to the put request -->
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Attendees" formControlName="Attendees" type="text" />
+                    <!-- <label for="">Vacation Attendees:</label>
     <span>{{vacation.ID}}</span> -->
-  </mat-form-field>
+                  </mat-form-field>
+                </div>
+
+                <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
+              </form>
+
+
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
   </div>
-
- 
-      <div>
-          <mat-form-field>
-              <input matInput placeholder="Attendees" formControlName="Attendees" type="Attendees" required [value]="vacation.Attendees" />
-    <!-- <label for="">Vacation Attendees:</label>
-    <span>{{vacation.ID}}</span> -->
-  </mat-form-field>
-  </div>
-
-<button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
-</form>
-</div>
-
-<a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Vacation } from 'src/app/models/Vacation';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VacationService } from 'src/app/services/vacation.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { VacaEdit } from 'src/app/models/VacaEdit';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 })
 export class DetailComponent implements OnInit {
 
-  vacation: Vacation;
+  vacation: VacaEdit;
   editVacationForm: FormGroup;
 
   constructor(private _form: FormBuilder,
@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
               private _router: Router) { 
 
                 this._activatedRoute.paramMap.subscribe(p => {
-                  this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: Vacation) =>{
+                  this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: VacaEdit) =>{
                     this.vacation = singleVacation;
                     this.createForm();
                   });
@@ -43,12 +43,17 @@ createForm() {
     Description: new FormControl(this.vacation.Description),
     ImageSource: new FormControl(this.vacation.ImageSource),
     StartDate: new FormControl(this.vacation.StartDate),
-    EndDate: new FormControl(this.vacation.EndDate)
+    EndDate: new FormControl(this.vacation.EndDate),
+    Attendees: new FormControl(this.vacation.Attendees)
+
+    // initialize second form for just EventList here?
   });
 }
 
 onSubmit(form){
-  const updateVacation: Vacation = {
+  console.log(this.vacation);
+  const updateVacation: VacaEdit = {
+    ID: this.vacation.ID,
     Name: form.value.Name,
     Description: form.value.Description,
     ImageSource: form.value.ImageSource,
