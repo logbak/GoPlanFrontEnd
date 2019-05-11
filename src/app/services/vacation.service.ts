@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Vacation } from '../models/Vacation';
+import { VacaEdit } from '../models/VacaEdit';
 
 const Api_Url = 'http://goplanapi.azurewebsites.net/api'
+// const Api_Url = 'http://localhost:56865/api'
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +30,7 @@ export class VacationService {
     return this._http.post(`${Api_Url}/Vacation/Post`, vacation, { headers: this.getHeaders() });
   }
 
-  updateVacation(vacation: Vacation){
+  updateVacation(vacation: VacaEdit){
     return this._http.put(`${Api_Url}/Vacation/Put`, vacation, { headers: this.getHeaders() });
   }
 

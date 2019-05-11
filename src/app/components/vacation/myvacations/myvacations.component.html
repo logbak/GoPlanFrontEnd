@@ -1,9 +1,17 @@
-<a mat-raised-button color="primary">Create New</a>
+<a mat-raised-button color="primary"  routerLink="/vacation/new">Create New</a>
 
 <div>
   <mat-table #table [dataSource]="dataSource">
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+    
+    <ng-container matColumnDef="buttons">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let vacation">
+        <i mat-icon class="material-icons" routerLink="/vacation/detail/{{vacation.ID}}">Edit</i>
+        <a mat-raised-button color="primary"  routerLink="/vacation/detail/{{vacation.ID}}">Edit</a>
+      </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="ID">
       <mat-header-cell *matHeaderCellDef> Vacation ID#</mat-header-cell>
@@ -13,7 +21,10 @@
 
     <ng-container matColumnDef="CreatedDate">
       <mat-header-cell *matHeaderCellDef> Vacation Created Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.CreatedDate}} </mat-cell>
+      <mat-cell *matCellDef="let vacation"> {{vacation.CreatedDate}} 
+          <!-- <i mat-icon class="material-icons" routerLink="/vacation/detail/{{vacation.ID}}">Edit</i> -->
+          <a mat-raised-button color="primary"  routerLink="/vacation/1">Edit</a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="StartDate">
@@ -43,10 +54,12 @@
 
     <ng-container matColumnDef="ImageSource">
       <mat-header-cell *matHeaderCellDef> Vacation Image Source</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.ImageSource}} </mat-cell>
+      <mat-cell *matCellDef="let vacation"> <img src="{{vacation.ImageSource}}" style="width:150px;border-radius:10px;" />
+        <!-- <div><img src="http://stem.x10host.com/lc.jpg" /></div> -->
+      </mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="EvenList">
+    
+    <!-- <ng-container matColumnDef="EvenList">
       <mat-header-cell *matHeaderCellDef> Vacation EvenList</mat-header-cell>
       <mat-cell *matCellDef="let vacation"> {{vacation.EvenList}} </mat-cell>
     </ng-container>
@@ -54,7 +67,7 @@
     <ng-container matColumnDef="Attendees">
       <mat-header-cell *matHeaderCellDef> Vacation Attendees</mat-header-cell>
       <mat-cell *matCellDef="let vacation"> {{vacation.Attendees}} </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
   </mat-table>
 </div>
