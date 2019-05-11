@@ -18,7 +18,15 @@ export class DetailComponent implements OnInit {
   constructor(private _form: FormBuilder,
               private _activatedRoute: ActivatedRoute, 
               private _vacationService: VacationService,
-              private _router: Router) { }
+              private _router: Router) { 
+
+                this._activatedRoute.paramMap.subscribe(p => {
+                  this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: Vacation) =>{
+                    this.vacation = singleVacation;
+                    this.createForm();
+                  });
+                });
+              }
 
   ngOnInit() { 
   //   this._activatedRoute.paramMap.subscribe(routeData => {
