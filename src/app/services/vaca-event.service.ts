@@ -25,15 +25,21 @@ export class VacaEventService {
   }
 
   createVacaEvent(vacaEvent: VacaEvent){
-    return this._http.post(`${Api_Url}/VacaEvent/Post`, vacaEvent, { headers: this.setHeader() });
+    return this._http.post(`${Api_Url}/VacaEvent/Post`, this.removeNulls(vacaEvent), { headers: this.setHeader() });
   }
 
   updateVacaEvent(vacaEvent: VacaEvent){
-    return this._http.put(`${Api_Url}/VacaEvent/Put`, vacaEvent, { headers: this.setHeader() });
+    return this._http.put(`${Api_Url}/VacaEvent/Put`, this.removeNulls(vacaEvent), { headers: this.setHeader() });
   }
 
   deleteVacaEvent(id: number) {
     return this._http.delete(`${Api_Url}/VacaEvent/Delete/${id}`, { headers: this.setHeader() });
+  }
+
+  removeNulls(anyModel){
+    Object.keys(anyModel).forEach((key) => (anyModel[key] == null) && delete anyModel[key]);
+    console.log(anyModel);
+    return anyModel;
   }
 
   private setHeader(): HttpHeaders {

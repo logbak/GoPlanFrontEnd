@@ -13,39 +13,35 @@ export class EventDetailComponent implements OnInit {
 
   vacaEvent: VacaEvent;
   editEventForm: FormGroup;
+  eventID: string;
   vacaID: string;
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _vacaEventService: VacaEventService, private _form: FormBuilder) { 
-      this.createForm();
+    
+    this._vacaEventService.getVacaEvent(this._activatedRoute.snapshot.paramMap.get('id2'))
+      .subscribe((singleEvent: VacaEvent) => 
+      {
+        this.vacaEvent = singleEvent;
+        this.createForm();
+      });
+
     }
 
   ngOnInit() {
-    this._activatedRoute.paramMap
-      .subscribe(routeData => 
-      {
-        this._vacaEventService.getVacaEvent(routeData.get('id2'))
-          .subscribe((singleVacaEvent: VacaEvent) => 
-          {
-            this.vacaEvent = singleVacaEvent;
-          }
-        );
-      }
-    );
     this.vacaID = this._activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.vacaID);
   }
 
   createForm() {
     this.editEventForm = this._form.group({
-      EventTypeId: new FormControl(this.vacaEvent.EventTypeId),
-      Name: new FormControl(this.vacaEvent.Name),
-      Description: new FormControl(this.vacaEvent.Description),
-      LocationName: new FormControl(this.vacaEvent.LocationName),
-      GooglePlaceId: new FormControl(this.vacaEvent.GooglePlaceId),
-      ImageSource: new FormControl(this.vacaEvent.Imagesource),
-      StartDate: new FormControl(this.vacaEvent.StartDate),
-      EndDate: new FormControl(this.vacaEvent.EndDate),
-      Cost: new FormControl(this.vacaEvent.Cost)
+      EventTypeId: new FormControl(),
+      Name: new FormControl(),
+      Description: new FormControl(),
+      LocationName: new FormControl(),
+      GooglePlaceId: new FormControl(),
+      ImageSource: new FormControl(),
+      StartDate: new FormControl(),
+      EndDate: new FormControl(),
+      Cost: new FormControl()
     });
   }
 
