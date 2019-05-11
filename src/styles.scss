@@ -22,7 +22,6 @@ body, html{
     padding: 5% 25% 10% 25%;
     justify-content: center;
     font-family: 'Permanent Marker', cursive;
-    text-align: center;
 }
 
 .footer{
@@ -40,6 +39,10 @@ body, html{
 .mat-table{
     font-family: 'Nothing You Could Do', cursive;
     font-size: larger;
+}
+
+.mat-form-field{
+    width: 100%;
 }
 
 .postcard-bg{
@@ -72,4 +75,5 @@ body, html{
     border-radius: 25px;
     background-color: seashell;
     margin: 5%;
+    padding: 2%;
 }
