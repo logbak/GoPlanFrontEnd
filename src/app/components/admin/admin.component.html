@@ -3,7 +3,7 @@
 
 <!-- This is the Vacation Table  -->
 <div class="TableHeader">
-  <h3>Vacation Table</h3>
+  <h3 class="TableHeaderText">Vacation Table</h3>
 </div>
 
 <div class="VacationTable">
@@ -24,18 +24,25 @@
   <ng-container matColumnDef="Update">
       <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
       <mat-cell *matCellDef="let Vacation" routerLink="../vacation/{{Vacation.ID}}">
-        <i class="material-icons">Update</i>
+        <img class="material-icons" src="../../assets/edit.png">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+      <mat-cell *matCellDef="let Vacation">
+        <img class="material-icons" src="../../assets/delete.png">
       </mat-cell>
     </ng-container>
 
   </mat-table> 
 </div>
 
-<!-- This is the EventType Table -->
 
+<!-- This is the EventType Table -->
 <div class="TableHeader">
-    <h3>Event Type Table</h3>
-  </div>
+  <h3 class="TableHeaderText">Event Type Table</h3>
+</div>
   
 <div class="EventTypeTable">
   <mat-table #table [dataSource]="dataSource">
@@ -52,12 +59,13 @@
       <mat-cell *matCellDef="let EventType"> {{EventType.Name}} </mat-cell>
     </ng-container>
 
+
     <ng-container matColumnDef="Update">
-        <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-        <mat-cell *matCellDef="let Vacation" routerLink="../">
-          <i class="material-icons">Update</i>
-        </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+      <mat-cell *matCellDef="let EventType" routerLink="">
+        <img class="material-icons" src="../../assets/edit.png">
+      </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="Delete">
         <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
@@ -69,10 +77,11 @@
   </mat-table>
 </div>
 
+
 <!-- This is the Vacation Event Table -->
 <div class="TableHeader">
-    <h3>Vacation Event Table</h3>
-  </div>
+  <h3 class="TableHeaderText">Vacation Event Table</h3>
+</div>
   
 <div class="VacaEventTable">
     <mat-table #table [dataSource]="dataSource2">
@@ -93,15 +102,17 @@
       <mat-header-cell *matHeaderCellDef>Event Name</mat-header-cell>
       <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
     </ng-container>
-      
+    <ng-container>
+        <button>hello World</button>
+    </ng-container>
+    
+
     <ng-container matColumnDef="Update">
         <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
         <mat-cell *matCellDef="let VacaEvent" routerLink="/vacation/{{VacaEvent.VacationID}}/detail/{{VacaEvent.ID}}">
-          <i class="material-icons">Update</i>
+          <img class="material-icons" src="../../assets/edit.png">
         </mat-cell>
       </ng-container>
     
     </mat-table>
   </div>
-
-<app-footer></app-footer>
