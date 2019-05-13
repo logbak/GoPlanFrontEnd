@@ -1,26 +1,31 @@
-<p>
-  Style me later - Login
-</p>
+<div class="sticker-bg">
+  <div id="mask">
+    <div class="content-container">
 
-<hr>
+      <h2>Login</h2>
 
-<div class="container">
+      <hr>
 
-  <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="loginForm" >
-    <div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Email" formControlName="email" type="email" required/>
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Password" formControlName="password" type="password" required/>
-        </mat-form-field>
+      <div class="container">
+
+        <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <div>
+            <div>
+              <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" type="email" required />
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <input matInput placeholder="Password" formControlName="password" type="password" required />
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-raise-button class="nav-btn" type="submit">Login</button>
+        </form>
+        <a routerLink="/signup">Sign up for an account</a>
+
       </div>
     </div>
-    <button mat-raise-button class="nav-btn" type="submit">Login</button>
-  </form>
-  <a routerLink="/signup">Sign up for an account</a>
-
+  </div>
 </div>
