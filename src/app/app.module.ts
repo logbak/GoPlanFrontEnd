@@ -10,7 +10,9 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTableModule
+  MatTableModule,
+  MatDatepickerModule,
+  MatDialogModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -85,7 +87,9 @@ const routes= [
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatDialogModule
   ],
   providers: [
     AuthService,

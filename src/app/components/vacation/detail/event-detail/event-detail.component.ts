@@ -15,6 +15,7 @@ export class EventDetailComponent implements OnInit {
   editEventForm: FormGroup;
   eventID: string;
   vacaID: string;
+  minDate = new Date();
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _vacaEventService: VacaEventService, private _form: FormBuilder) { 
     
@@ -33,15 +34,15 @@ export class EventDetailComponent implements OnInit {
 
   createForm() {
     this.editEventForm = this._form.group({
-      EventTypeId: new FormControl(),
-      Name: new FormControl(),
-      Description: new FormControl(),
-      LocationName: new FormControl(),
-      GooglePlaceId: new FormControl(),
-      ImageSource: new FormControl(),
-      StartDate: new FormControl(),
-      EndDate: new FormControl(),
-      Cost: new FormControl()
+      EventTypeId: new FormControl(this.vacaEvent.EventTypeId),
+      Name: new FormControl(this.vacaEvent.Name),
+      Description: new FormControl(this.vacaEvent.Description),
+      LocationName: new FormControl(this.vacaEvent.LocationName),
+      GooglePlaceId: new FormControl(this.vacaEvent.GooglePlaceId),
+      ImageSource: new FormControl(this.vacaEvent.Imagesource),
+      StartDate: new FormControl(this.vacaEvent.StartDate),
+      EndDate: new FormControl(this.vacaEvent.EndDate),
+      Cost: new FormControl(this.vacaEvent.Cost)
     });
   }
 
