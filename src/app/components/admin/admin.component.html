@@ -2,6 +2,10 @@
 <hr>
 
 <!-- This is the Vacation Table  -->
+<div class="TableHeader">
+  <h3>Vacation Table</h3>
+</div>
+
 <div class="VacationTable">
   <mat-table #table [dataSource]="dataSource1">
     <mat-header-row *matHeaderRowDef="columnNames1"></mat-header-row>
@@ -28,6 +32,11 @@
 </div>
 
 <!-- This is the EventType Table -->
+
+<div class="TableHeader">
+    <h3>Event Type Table</h3>
+  </div>
+  
 <div class="EventTypeTable">
   <mat-table #table [dataSource]="dataSource">
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
@@ -61,6 +70,10 @@
 </div>
 
 <!-- This is the Vacation Event Table -->
+<div class="TableHeader">
+    <h3>Vacation Event Table</h3>
+  </div>
+  
 <div class="VacaEventTable">
     <mat-table #table [dataSource]="dataSource2">
       <mat-header-row *matHeaderRowDef="columnNames2"></mat-header-row>
