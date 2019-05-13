@@ -1,66 +1,95 @@
 <div class="sticker-bg">
-    <div id="mask">
-      <div class="content-container" *ngIf="vacaEvent">
-        <h2>
-          Event
-        </h2>
-        <br>
-        <hr>
-  
-        <div class="detail-edit">
-          <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
-            <ng-container>
-              <div fxFlex="0 1 calc(50% - 32px)">
-  
-                <label for="">Start Date:</label>
-                <p>{{vacaEvent.StartDate | date:'medium'}}</p>
-  
-                <!-- add rest of details here -->
-  
-                <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
-              </div>
-            </ng-container>
-  
-            <ng-container>
-              <div fxFlex="0 1 calc(50% - 32px)">
-                <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="editEventForm">
-  
-  
-                  <div>
-                    <mat-form-field>
-                      <input matInput placeholder="StartDate" formControlName="StartDate" type="datetime-local" />
-                    </mat-form-field>
-                  </div>
-  
-  
-                  <div>
-                    <mat-form-field>
-                      <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime-local" />
-                    </mat-form-field>
-                  </div>
-  
-  
-                  <div>
-                    <mat-form-field>
-                      <input matInput placeholder="Name" formControlName="Name" type="text" />
-                    </mat-form-field>
-                  </div>
-  
-  
-                  <div>
-                    <mat-form-field>
-                      <input matInput placeholder="Description" formControlName="Description" type="text" />
-                    </mat-form-field>
-                  </div>
-  
-  
-                  <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
-                </form>
-  
-  
-              </div>
-            </ng-container>
-          </div>
+  <div id="mask">
+    <div class="content-container" *ngIf="vacaEvent">
+      <br>
+      <h2>
+        Event
+      </h2>
+      <br>
+      <hr>
+
+      <div class="detail-edit">
+        <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(50% - 32px)">
+
+              <label for="">Start Date:</label>
+              <p>{{vacaEvent.StartDate | date:'medium'}}</p>
+
+              <label for="">End Date:</label>
+              <p>{{vacaEvent.EndDate | date:'medium'}}</p>
+
+              <label for="">Name:</label>
+              <p>{{vacaEvent.Name}}</p>
+
+              <label for="">Description:</label>
+              <p>{{vacaEvent.Description}}</p>
+
+              <label for="">Location:</label>
+              <p>{{vacaEvent.LocationName}}</p>
+
+              <label for="">Cost:</label>
+              <p>{{vacaEvent.Cost}}</p>
+
+              <!-- add rest of details here -->
+
+              <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
+            </div>
+          </ng-container>
+
+          <ng-container>
+            <div fxFlex="0 1 calc(50% - 32px)">
+              <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="editEventForm">
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Start - {{vacaEvent.StartDate | date:'medium'}}" formControlName="StartDate" type="datetime" />
+                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker> -->
+                  </mat-form-field>
+                </div>
+
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="End - {{vacaEvent.EndDate | date:'medium'}}" formControlName="EndDate" type="datetime" />
+                  </mat-form-field>
+                </div>
+
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="Name" type="text" />
+                  </mat-form-field>
+                </div>
+
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Description" formControlName="Description" type="text" />
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Location" formControlName="LocationName" type="text" />
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Cost" formControlName="Cost" type="number" />
+                  </mat-form-field>
+                </div>
+
+
+                <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
+              </form>
+
+
+            </div>
+          </ng-container>
         </div>
       </div>
     </div>
+  </div>
