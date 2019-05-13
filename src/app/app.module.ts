@@ -5,14 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 import { 
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
-  MatDatepickerModule,
-  MatDialogModule
+  MatDialogModule,
+  MatNativeDateModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -89,12 +90,13 @@ const routes= [
     MatTableModule,
     FlexLayoutModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
   providers: [
     AuthService,
     VacationService,
-    VacaEventService 
+    VacaEventService
   ],
   bootstrap: [AppComponent]
 })
