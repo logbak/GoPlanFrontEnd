@@ -20,5 +20,6 @@ export class MyvacationsComponent implements OnInit {
       this._vacationService.getVacationsByUser().subscribe((vacations: Vacation[]) => {
         this.dataSource = new MatTableDataSource<Vacation>(vacations);
       });
+      console.log(this.dataSource);
     }
 }

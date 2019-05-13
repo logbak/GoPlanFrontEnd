@@ -4,6 +4,9 @@ import { VacationService } from 'src/app/services/vacation.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { VacaEdit } from 'src/app/models/VacaEdit';
 
+import { VacaEventService} from 'src/app/services/vaca-event.service';
+import { VacaEvent } from '../../../models/VacaEvent';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-detail',
@@ -14,11 +17,18 @@ export class DetailComponent implements OnInit {
 
   vacation: VacaEdit;
   editVacationForm: FormGroup;
+  ID: string;
+  vacaEvent: VacaEvent;
+  dataSource: MatTableDataSource<VacaEvent>;
+
+  
+  columnNames = ['VacaEventName','StartDate', 'EndDate', 'ID'];
 
   constructor(private _form: FormBuilder,
               private _activatedRoute: ActivatedRoute, 
               private _vacationService: VacationService,
-              private _router: Router) { 
+              private _router: Router,
+              private _VacaEventServices: VacaEventService) { 
 
                 this._activatedRoute.paramMap.subscribe(p => {
                   this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: VacaEdit) =>{
@@ -29,16 +39,19 @@ export class DetailComponent implements OnInit {
               }
 
   ngOnInit() {
+    this._VacaEventServices.getVacaEvents().subscribe((vacaEvent: VacaEvent[]) =>
+    { this.dataSource =  new MatTableDataSource<VacaEvent>(vacaEvent)
+   });
 }
 
 createForm() {
   this.editVacationForm = this._form.group({
-    Name: new FormControl(),
-    Description: new FormControl(),
-    ImageSource: new FormControl(),
-    StartDate: new FormControl(),
-    EndDate: new FormControl(),
-    Attendees: new FormControl()
+    Name: new FormControl(this.vacation.Name),
+    Description: new FormControl(this.vacation.Description),
+    ImageSource: new FormControl(this.vacation.ImageSource),
+    StartDate: new FormControl(this.vacation.StartDate),
+    EndDate: new FormControl(this.vacation.EndDate),
+    Attendees: new FormControl(this.vacation.Attendees)
   });
 
   // initialize second form for just EventList here?
@@ -55,7 +68,7 @@ onSubmit(form){
     Attendees: form.value.Attendees
   };
   this._vacationService.updateVacation(updateVacation).subscribe(d => {
-    this._router.navigate(['/my-vacations']);
+    this._router.navigate(['/vacation/my-vacations']);
   });
   }
 }
