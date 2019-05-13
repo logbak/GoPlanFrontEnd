@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
 
 import { 
   MatButtonModule,
@@ -34,12 +34,13 @@ import { NewEventComponent } from './components/vacation/detail/new-event/new-ev
 import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes= [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'admin', component: AdminComponent},
-  { path: 'vacation', children: 
+  { path: 'vacation', canActivate: [AuthGuardService], children: 
   [
     { path: '', component: VacationComponent},
     { path: 'my-vacations', component: MyvacationsComponent},
@@ -52,11 +53,11 @@ const routes= [
     ]},
   ]},
   { path: '', children: 
-  [
-    { path: '', component: LandingComponent},
+  [ 
+    { path: '',  canActivate: [AuthGuardService], component: LandingComponent},
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
-  ]},
+  ]}
 ];
 
 @NgModule({
@@ -91,10 +92,11 @@ const routes= [
     FlexLayoutModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [
     AuthService,
+    AuthGuardService,
     VacationService,
     VacaEventService
   ],
