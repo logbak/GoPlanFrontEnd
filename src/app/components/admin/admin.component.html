@@ -31,7 +31,7 @@
     <ng-container matColumnDef="Delete">
       <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
       <mat-cell *matCellDef="let Vacation">
-        <img class="material-icons" src="../../assets/delete.png">
+        <img class="material-icons" src="../../assets/delete.png" onclick(delete)>
       </mat-cell>
     </ng-container>
 
@@ -41,7 +41,7 @@
 
 <!-- This is the EventType Table -->
 <div class="TableHeader">
-  <h3 class="TableHeaderText">Event Type Table</h3>
+  <h3 class="TableHeaderText">Event Type Table</h3><img class="CreateIcon" src="../../../assets/addition.jpg"> 
 </div>
   
 <div class="EventTypeTable">
@@ -62,15 +62,15 @@
 
     <ng-container matColumnDef="Update">
       <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-      <mat-cell *matCellDef="let EventType" routerLink="">
+      <mat-cell *matCellDef="let EventType">
         <img class="material-icons" src="../../assets/edit.png">
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Delete">
         <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-        <mat-cell *matCellDef="let Vacation" routerLink="../">
-          <i class="material-icons">Delete</i>
+        <mat-cell *matCellDef="let Vacation">
+          <img class="material-icons" src="../../assets/delete.png">
         </mat-cell>
       </ng-container>
 
@@ -102,10 +102,6 @@
       <mat-header-cell *matHeaderCellDef>Event Name</mat-header-cell>
       <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
     </ng-container>
-    <ng-container>
-        <button>hello World</button>
-    </ng-container>
-    
 
     <ng-container matColumnDef="Update">
         <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
