@@ -1,6 +1,7 @@
 <div class="sticker-bg">
   <div id="mask">
     <div class="content-container" *ngIf="vacation">
+      <div *ngIf="vacation">
       <h2>
         Vacation Detail/Edit
       </h2>
@@ -32,7 +33,7 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="StartDate" formControlName="StartDate" type="datetime-local" />
+                    <input matInput placeholder="{{vacation.StartDate}}" formControlName="StartDate" type="datetime-local" />
                     <!-- <label for="">Vacation Start Date:</label>
                         <span>{{vacation.StartDate}}</span> -->
                   </mat-form-field>
@@ -41,7 +42,7 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime-local" />
+                    <input matInput placeholder="{{vacation.EndDate}}" formControlName="EndDate" type="datetime-local" />
                     <!-- <label for="">Vacation End Date:</label>
     <span>{{vacation.EndDate}}</span> -->
                   </mat-form-field>
@@ -50,7 +51,7 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="Name" formControlName="Name" type="text" />
+                    <input matInput placeholder="{{vacation.Name}}" formControlName="Name" type="text" />
                     <!-- <label for="">Vacation Name:</label>
     <span>{{vacation.Name}}</span> -->
                   </mat-form-field>
@@ -59,7 +60,7 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="Description" formControlName="Description" type="text" />
+                    <input matInput placeholder="{{vacation.Description}}" formControlName="Description" type="text" />
                     <!-- <label for="">Vacation Description:</label>
     <span>{{vacation.Description}}</span> -->
                   </mat-form-field>
@@ -68,7 +69,7 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="ImageSource" formControlName="ImageSource" type="text" />
+                    <input matInput placeholder="{{vacation.ImageSource}}" formControlName="ImageSource" type="text" />
                     <!-- <label for="">Vacation Image Source:</label>
     <span><img src="{{vacation.ImageSource}}" /></span> -->
                   </mat-form-field>
@@ -78,7 +79,7 @@
                 <!-- to do: remake as input that adds to an existing array to submit to the put request -->
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="Attendees" formControlName="Attendees" type="text" />
+                    <input matInput placeholder="{{vacation.Attendees}}" formControlName="Attendees" type="text" />
                     <!-- <label for="">Vacation Attendees:</label>
     <span>{{vacation.ID}}</span> -->
                   </mat-form-field>
@@ -86,11 +87,45 @@
 
                 <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
               </form>
-
+              
 
             </div>
           </ng-container>
         </div>
+      </div>
+</div>
+
+
+      <div class="VacaEventTable">
+
+          <a mat-raised-button color="primary"  routerLink="/vacation/{{vacation.ID}}">Edit</a>
+        <mat-table #table [dataSource]="dataSource">
+          <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+    
+        <ng-container matColumnDef="EventID">
+          <mat-header-cell *matHeaderCellDef>Event ID</mat-header-cell>
+          <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.ID}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="VacationId">
+            <mat-header-cell *matHeaderCellDef>Event</mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.VacationID}}</mat-cell>
+          </ng-container>
+      
+        <ng-container matColumnDef="VacaEventName">
+          <mat-header-cell *matHeaderCellDef>Event Name</mat-header-cell>
+          <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
+        </ng-container>
+          
+        <ng-container matColumnDef="Update">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent" routerLink="../vacation/{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">
+              <i class="material-icons">Update</i>
+            </mat-cell>
+          </ng-container>
+        
+        </mat-table>
       </div>
     </div>
   </div>

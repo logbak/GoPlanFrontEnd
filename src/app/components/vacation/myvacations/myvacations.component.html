@@ -21,9 +21,9 @@
 
     <ng-container matColumnDef="CreatedDate">
       <mat-header-cell *matHeaderCellDef> Vacation Created Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.CreatedDate}} 
-          <!-- <i mat-icon class="material-icons" routerLink="/vacation/detail/{{vacation.ID}}">Edit</i> -->
-          <a mat-raised-button color="primary"  routerLink="/vacation/1">Edit</a>
+      <mat-cell *matCellDef="let vacation"> <!--{{vacation.CreatedDate}} 
+           <i mat-icon class="material-icons" routerLink="/vacation/detail/{{vacation.ID}}">Edit</i> -->
+          <a mat-raised-button color="primary"  routerLink="/vacation/{{vacation.ID}}">Edit</a>
       </mat-cell>
     </ng-container>
 
