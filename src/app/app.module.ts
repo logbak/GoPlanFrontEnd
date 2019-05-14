@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { 
   MatButtonModule,
@@ -13,6 +14,7 @@ import {
   MatTableModule,
   MatDatepickerModule,
   MatDialogModule,
+  MatNativeDateModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,13 +36,15 @@ import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
 import { EventTypeDialogComponent } from './components/admin/event-type-dialog/event-type-dialog.component';
-
+import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
 
 const routes= [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'admin', component: AdminComponent},
-  { path: 'vacation', children: 
+  { path: 'admin', canActivate: [RoleGuardService], 
+    data: { expectedRole: 'Admin'} ,component: AdminComponent},
+  { path: 'vacation', canActivate: [AuthGuardService], children: 
   [
     { path: '', component: VacationComponent},
     { path: 'my-vacations', component: MyvacationsComponent},
@@ -53,11 +57,11 @@ const routes= [
     ]},
   ]},
   { path: '', children: 
-  [
-    { path: '', component: LandingComponent},
+  [ 
+    { path: '',  canActivate: [AuthGuardService], component: LandingComponent},
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
-  ]},
+  ]}
 ];
 
 @NgModule({
@@ -94,12 +98,14 @@ const routes= [
     MatTableModule,
     FlexLayoutModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
   providers: [
     AuthService,
+    AuthGuardService,
     VacationService,
-    VacaEventService 
+    VacaEventService
   ],
   bootstrap: [AppComponent]
 })
