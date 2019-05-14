@@ -46,6 +46,7 @@ export class AuthService {
     this._http.get(`${Api_Url}/api/Account/UserInfo`, { headers: this.setHeader() })
       .subscribe((userRole: UserInfo) => {
         localStorage.setItem('user_role', userRole.Role);
+        localStorage.setItem('username', userRole.Username);
       });
   }
 
