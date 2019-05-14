@@ -1,37 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router, CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
+import { UserInfo } from '../models/UserInfo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RoleGuardService implements CanActivate{
+export class RoleGuardService implements CanActivate {
 
-  private _jwtHelper = new JwtHelperService();
+  _userInfo: UserInfo;
 
   constructor(
-    private _router: Router, 
-    private _authSvc: AuthService) { }
+    private _router: Router) { }
 
-    canActivate(route: ActivatedRouteSnapshot): boolean {
-
-      // this will be passed from the route config
-      // on the data property
-      const expectedRole = route.data.expectedRole;
-  
-      const token = localStorage.getItem('id_token');
-  
-      // decode the token to get its payload
-      const tokenPayload = this._jwtHelper.decodeToken(token);
-      
-      if (
-        !this._authSvc.isAuthenticated() || 
-        tokenPayload.role !== expectedRole
-      ) {
+  canActivate(): Observable<boolean> {
+    return new Observable<boolean>((obs) => {
+      if (localStorage.getItem('user_role') != "Admin") {
         this._router.navigate(['/login']);
-        return false;
+        return obs.next(false);
       }
-      return true;
-    }
+      else {
+        return obs.next(true);
+      }
+    });
+  }
 }

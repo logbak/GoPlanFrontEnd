@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { JwtHelperService } from "@auth0/angular-jwt";
 
 import { 
   MatButtonModule,
@@ -101,8 +100,7 @@ const routes= [
     AuthService,
     AuthGuardService,
     VacationService,
-    VacaEventService,
-    JwtHelperService
+    VacaEventService
   ],
   bootstrap: [AppComponent]
 })
