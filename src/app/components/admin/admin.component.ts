@@ -36,6 +36,7 @@ export class AdminComponent implements OnInit {
       console.log('Dialog result: ${result}');
     });
   }
+  
   // onDelete() {
   //   this._eventTypeServices.deleteEventType(this.eventtype.EventTypeID).subscribe(() =>{
   //     this._router.navigate(['/admin'])
