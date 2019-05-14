@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VacationService } from 'src/app/services/vacation.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { VacaEdit } from 'src/app/models/VacaEdit';
 
 import { VacaEventService} from 'src/app/services/vaca-event.service';
 import { VacaEvent } from '../../../models/VacaEvent';
 import { MatTableDataSource } from '@angular/material';
+
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-detail',
@@ -23,6 +25,7 @@ export class DetailComponent implements OnInit {
 
   
   columnNames = ['VacaEventName','StartDate', 'EndDate', 'ID'];
+  //fb: any;
 
   constructor(private _form: FormBuilder,
               private _activatedRoute: ActivatedRoute, 
@@ -53,9 +56,33 @@ createForm() {
     EndDate: new FormControl(this.vacation.EndDate),
     Attendees: new FormControl(this.vacation.Attendees)
   });
-
-  // initialize second form for just EventList here?
 }
+  
+// createForm(){
+// this.editVacationForm = this._form.group({
+//   Name: new FormControl(this.vacation.Name),
+//   Description: new FormControl(this.vacation.Description),
+//   ImageSource: new FormControl(this.vacation.ImageSource),
+//   StartDate: new FormControl(this.vacation.StartDate),
+//   EndDate: new FormControl(this.vacation.EndDate),
+//   //Attendees: new FormControl(this.vacation.Attendees),
+//   //Name: [new FormControl(this.vacation.Name)],
+//   //Description: [''],
+ 
+//   Attendees: this._form.array([
+//     this._form.control(`${this.vacation.Attendees}`)
+//   ])
+// });
+// }
+
+// get aliases() {
+//   return this.editVacationForm.get('aliases') as FormArray;
+// }
+
+// addAlias() {
+//   this.aliases.push(this._form.control(''));
+// }
+
 
 onSubmit(form){
   const updateVacation: VacaEdit = {
@@ -72,3 +99,4 @@ onSubmit(form){
   });
   }
 }
+

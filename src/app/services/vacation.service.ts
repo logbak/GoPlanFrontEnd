@@ -34,6 +34,10 @@ export class VacationService {
     return this._http.put(`${Api_Url}/Vacation/Put`, this.removeNulls(vacation), { headers: this.getHeaders() });
   }
 
+  // updateVacation(vacation: VacaEdit){
+  //   return this._http.put(`${Api_Url}/Vacation/Put`, { headers: this.getHeaders() });
+  // }
+
   deleteVacation(id: number) {
     return this._http.delete(`${Api_Url}/Vacation/Delete/${id}`, { headers: this.getHeaders() });
   }

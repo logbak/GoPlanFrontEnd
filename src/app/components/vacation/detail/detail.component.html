@@ -5,6 +5,7 @@
         <h2>
           Vacation Detail/Edit
         </h2>
+        <a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>
         <br>
         <hr>
 
@@ -22,7 +23,6 @@
 
                 <!-- add rest of details here -->
 
-                <a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>
               </div>
             </ng-container>
 
@@ -100,43 +100,56 @@
       </div>
 
 
+      
       <div class="VacaEventTable">
-
+        
         <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}">Edit</a>
         <mat-table #table [dataSource]="dataSource">
           <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
-
+          
           <ng-container matColumnDef="VacaEventName">
             <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
           </ng-container>
-
+          
           <ng-container matColumnDef="StartDate">
             <mat-header-cell *matHeaderCellDef>Start Date</mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate}}</mat-cell>
           </ng-container>
-
+          
           <ng-container matColumnDef="EndDate">
             <mat-header-cell *matHeaderCellDef>End Date</mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate}}</mat-cell>
           </ng-container>
-
+          
           <ng-container matColumnDef="ID">
             <mat-header-cell *matHeaderCellDef>EventTypeID</mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}</mat-cell>
           </ng-container>
-
+          
           <ng-container matColumnDef="Update">
             <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent"
-              routerLink="../vacation/{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">
-              <i class="material-icons">Update</i>
-            </mat-cell>
-          </ng-container>
-
-        </mat-table>
-      </div>
+            routerLink="../vacation/{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">
+            <i class="material-icons">Update</i>
+          </mat-cell>
+        </ng-container>
+        <!-- <ng-container>
+        <div formArrayName="Attendees">
+            <h3>Aliases</h3> <button (click)="addAlias()">Add Attendees</button>
+          
+            <div *ngFor="let address of aliases.controls; let i=index">
+              
+              <label>
+                Alias:
+                <input type="text" [formControlName]="i">
+              </label>
+            </div>
+          </div>
+        </ng-container> -->
+      </mat-table>
     </div>
   </div>
-  </div>
+</div>
+</div>
