@@ -23,7 +23,14 @@ export class EventDetailComponent implements OnInit {
       .subscribe((singleEvent: VacaEvent) => 
       {
         this.vacaEvent = singleEvent;
-        this.createForm();
+        if (this.vacaEvent.UserId == localStorage.getItem('username') || localStorage.getItem('user_role') == "Admin")
+        {
+          this.createForm();
+        }
+        else 
+        {
+          this._router.navigate(['/vacation/my-vacations']);
+        }
       });
 
     }
