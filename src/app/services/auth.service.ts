@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Token } from '../models/Token';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const Api_Url = 'http://goplanapi.azurewebsites.net'
 // const Api_Url = 'http://localhost:56865'
@@ -15,8 +16,11 @@ export class AuthService {
 
   userInfo: Token;
   isLoggedIn = new Subject<boolean>();
+  private _jwtHelper = new JwtHelperService();
 
-  constructor(private _http: HttpClient, private _router: Router) { }
+  constructor(
+    private _http: HttpClient, 
+    private _router: Router) { }
 
   private setHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
@@ -51,6 +55,13 @@ export class AuthService {
     this.isLoggedIn.next(false);
     this._http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeader() });
     this._router.navigate(['/login']);
+  }
+
+  public isAuthenticated(): boolean {
+
+    const token = localStorage.getItem('token');
+
+    return !this._jwtHelper.isTokenExpired(token);
   }
 
 }

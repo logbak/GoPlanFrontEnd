@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 import { 
   MatButtonModule,
@@ -35,11 +36,13 @@ import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
 
 const routes= [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'admin', canActivate: [RoleGuardService], 
+    data: { expectedRole: 'Admin'} ,component: AdminComponent},
   { path: 'vacation', canActivate: [AuthGuardService], children: 
   [
     { path: '', component: VacationComponent},
@@ -92,13 +95,14 @@ const routes= [
     FlexLayoutModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatNativeDateModule,
+    MatNativeDateModule
   ],
   providers: [
     AuthService,
     AuthGuardService,
     VacationService,
-    VacaEventService
+    VacaEventService,
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })
