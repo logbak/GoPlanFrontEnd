@@ -41,7 +41,8 @@
 
 <!-- This is the EventType Table -->
 <div class="TableHeader">
-  <h3 class="TableHeaderText">Event Type Table</h3><img class="CreateIcon" src="../../../assets/addition.jpg"> 
+  <h3 class="TableHeaderText">Event Type Table</h3>
+  <img class="CreateIcon" src="../../../assets/addition.jpg" (click)="openDialog()"> 
 </div>
   
 <div class="EventTypeTable">
@@ -63,7 +64,7 @@
     <ng-container matColumnDef="Update">
       <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
       <mat-cell *matCellDef="let EventType">
-        <img class="material-icons" src="../../assets/edit.png">
+        <img class="material-icons" src="../../assets/edit.png" >
       </mat-cell>
     </ng-container>
 

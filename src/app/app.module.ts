@@ -12,6 +12,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatNativeDateModule
  } from '@angular/material';
@@ -34,6 +35,7 @@ import { NewEventComponent } from './components/vacation/detail/new-event/new-ev
 import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
+import { EventTypeDialogComponent } from './components/admin/event-type-dialog/event-type-dialog.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 
@@ -77,8 +79,11 @@ const routes= [
     DetailComponent,
     EventDetailComponent,
     AdminComponent,
-    NewEventComponent
+    NewEventComponent,
+    EventTypeDialogComponent
   ],
+  entryComponents:[EventTypeDialogComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
