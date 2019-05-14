@@ -12,7 +12,7 @@ import {
   MatInputModule,
   MatTableModule,
   MatDatepickerModule,
-  MatDialogModule
+  MatDialogModule,
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,7 @@ import { NewEventComponent } from './components/vacation/detail/new-event/new-ev
 import { VacationService } from './services/vacation.service';
 import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
+import { EventTypeDialogComponent } from './components/admin/event-type-dialog/event-type-dialog.component';
 
 const routes= [
   { path: 'about', component: AboutComponent},
@@ -73,8 +74,10 @@ const routes= [
     DetailComponent,
     EventDetailComponent,
     AdminComponent,
-    NewEventComponent
+    NewEventComponent,
+    EventTypeDialogComponent
   ],
+  entryComponents:[EventTypeDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -8,7 +8,8 @@ import { EventType } from '../../models/EventType';
 import { VacaEventService} from 'src/app/services/vaca-event.service';
 import { VacaEvent } from '../../models/VacaEvent';
 
-import { MatTableDataSource, MatTable } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { EventTypeDialogComponent } from './event-type-dialog/event-type-dialog.component';
 
 @Component({
   selector: 'app-admin',
@@ -17,8 +18,11 @@ import { MatTableDataSource, MatTable } from '@angular/material';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private _eventTypeServices: EventTypeService, private _VacaEventServices: VacaEventService, private _vacationServices: VacationService) { }
+  constructor(private _eventTypeServices: EventTypeService, private _VacaEventServices: VacaEventService, private _vacationServices: VacationService, public dialog: MatDialog) { }
 
+  openDialog(){
+    this.dialog.open(EventTypeDialogComponent);
+  }
   ngOnInit() {
     
     this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) =>
