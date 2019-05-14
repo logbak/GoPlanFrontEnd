@@ -3,8 +3,6 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { EventTypeService } from 'src/app/services/event-type.service';
-import { EventType } from '../../../models/EventType';
-import { formControlBinding } from '@angular/forms/src/directives/reactive_directives/form_control_directive';
 
 @Component({
   selector: 'app-event-type-dialog',
@@ -13,8 +11,8 @@ import { formControlBinding } from '@angular/forms/src/directives/reactive_direc
 })
 export class EventTypeDialogComponent implements OnInit {
 
-  eventTypeForm: FormGroup;
-  eventID: string;
+  EventTypeForm: FormGroup;
+  eventID: number;
   eventTypeName: string;
 
   constructor(private _eventTypeServices: EventTypeService, private _form: FormBuilder, private _router: Router, private _route: ActivatedRoute) { 
@@ -24,14 +22,19 @@ export class EventTypeDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  refresh(): void {
+    window.location.reload();
+}
+
   createForm(){
-    this.eventTypeForm = this._form.group({
+    this.EventTypeForm = this._form.group({
       ID: new FormControl,
       Name: new FormControl
     });
   }
+  
   onSubmit(){
-    this._eventTypeServices.createEventType(this.eventTypeForm.value)
+    this._eventTypeServices.createEventType(this.EventTypeForm.value)
     .subscribe(data => {this._router.navigate(['../admin']);
   });
   }

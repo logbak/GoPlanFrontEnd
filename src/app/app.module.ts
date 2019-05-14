@@ -35,6 +35,7 @@ import { AuthService } from './services/auth.service';
 import { VacaEventService } from './services/vaca-event.service';
 import { EventTypeDialogComponent } from './components/admin/event-type-dialog/event-type-dialog.component';
 
+
 const routes= [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
@@ -78,6 +79,7 @@ const routes= [
     EventTypeDialogComponent
   ],
   entryComponents:[EventTypeDialogComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
