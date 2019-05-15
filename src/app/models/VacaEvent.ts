@@ -1,6 +1,6 @@
 export interface VacaEvent {
     ID?: number;
-    UserId?: string;
+    User?: string;
     VacationId?: number;
     EventTypeId: number;
     LocationName?: string;

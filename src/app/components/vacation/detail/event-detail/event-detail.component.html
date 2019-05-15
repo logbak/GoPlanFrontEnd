@@ -14,10 +14,13 @@
             <div fxFlex="0 1 calc(50% - 32px)">
 
               <label for="">Start Date:</label>
-              <p>{{vacaEvent.StartDate | date:'medium'}}</p>
+              <p>{{vacaEvent.StartDate | date:'mediumDate'}}</p>
 
               <label for="">End Date:</label>
-              <p>{{vacaEvent.EndDate | date:'medium'}}</p>
+              <p>{{vacaEvent.EndDate | date:'mediumDate'}}</p>
+
+              <label for="">Event Type:</label>
+              <p>{{currentEventType}}</p>
 
               <label for="">Name:</label>
               <p>{{vacaEvent.Name}}</p>
@@ -52,7 +55,9 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="End - {{vacaEvent.EndDate | date:'medium'}}" formControlName="EndDate" type="datetime" />
+                    <input matInput [min]="minDate" [matDatepicker]="picker2" placeholder="End - {{vacaEvent.EndDate | date:'medium'}}" formControlName="EndDate" type="datetime" />
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="month" [startAt]="minDate"></mat-datepicker>
                   </mat-form-field>
                 </div>
 
