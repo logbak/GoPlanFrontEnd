@@ -16,7 +16,7 @@ import { FormArray } from '@angular/forms';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-
+  
   vacation: VacaEdit;
   editVacationForm: FormGroup;
   ID: string;
@@ -47,41 +47,41 @@ export class DetailComponent implements OnInit {
    });
 }
 
-createForm() {
-  this.editVacationForm = this._form.group({
-    Name: new FormControl(this.vacation.Name),
-    Description: new FormControl(this.vacation.Description),
-    ImageSource: new FormControl(this.vacation.ImageSource),
-    StartDate: new FormControl(this.vacation.StartDate),
-    EndDate: new FormControl(this.vacation.EndDate),
-    Attendees: new FormControl(this.vacation.Attendees)
-  });
-}
+// createForm() {
+//   this.editVacationForm = this._form.group({
+//     Name: new FormControl(this.vacation.Name),
+//     Description: new FormControl(this.vacation.Description),
+//     ImageSource: new FormControl(this.vacation.ImageSource),
+//     StartDate: new FormControl(this.vacation.StartDate),
+//     EndDate: new FormControl(this.vacation.EndDate),
+//     Attendees: new FormControl(this.vacation.Attendees)
+//   });
+// }
   
-// createForm(){
-// this.editVacationForm = this._form.group({
-//   Name: new FormControl(this.vacation.Name),
-//   Description: new FormControl(this.vacation.Description),
-//   ImageSource: new FormControl(this.vacation.ImageSource),
-//   StartDate: new FormControl(this.vacation.StartDate),
-//   EndDate: new FormControl(this.vacation.EndDate),
-//   //Attendees: new FormControl(this.vacation.Attendees),
-//   //Name: [new FormControl(this.vacation.Name)],
-//   //Description: [''],
+createForm(){
+this.editVacationForm = this._form.group({
+  Name: new FormControl(this.vacation.Name),
+  Description: new FormControl(this.vacation.Description),
+  ImageSource: new FormControl(this.vacation.ImageSource),
+  StartDate: new FormControl(this.vacation.StartDate),
+  EndDate: new FormControl(this.vacation.EndDate),
+  Attendees: new FormControl(this.vacation.Attendees),
+  //Name: [new FormControl(this.vacation.Name)],
+  //Description: [''],
  
-//   Attendees: this._form.array([
-//     this._form.control(`${this.vacation.Attendees}`)
-//   ])
-// });
-// }
+  // Attendees: this._form.array([
+  //   this._form.control(`${this.vacation.Attendees}`)
+  // ])
+});
+}
 
-// get aliases() {
-//   return this.editVacationForm.get('aliases') as FormArray;
-// }
+get Attendees() {
+  return this.editVacationForm.get('Attendees') as FormArray;
+}
 
-// addAlias() {
-//   this.aliases.push(this._form.control(''));
-// }
+addAttendees() {
+  this.Attendees.push(this._form.control(''));
+}
 
 
 onSubmit(form){
