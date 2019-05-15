@@ -1,0 +1,6 @@
+<h3> Are you sure you want to delete {{data.name}}. </h3>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close mat-dialog-close="false">No</button>
+  <button mat-button class="nav-btn" type="submit" mat-dialog-close mat-dialog-close="true" (click)="onDelete(data.id)">Yes</button>
+</mat-dialog-actions>
