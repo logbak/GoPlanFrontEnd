@@ -22,7 +22,7 @@ export class EventTypeService {
   }
 
   getEventTypeByID(ID: string) {
-    return this._http.get(`${ApiUrl}EventType/Get/${ID}`, httpoptions, /*{headers: this.getHeaders()}*/);
+    return this._http.get(`${ApiUrl}EventType/Get/${ID}`, /*httpoptions,*/ {headers: this.getHeaders()});
   }
   createEventType(eventtype: EventType){
     return this._http.post(`${ApiUrl}EventType/Post`, this.removeNulls(eventtype), { headers: this.getHeaders() });
@@ -33,7 +33,7 @@ export class EventTypeService {
   }
 
   deleteEventType(ID: number) {
-    return this._http.delete(`${ApiUrl}EventType/Delete/${ID}`, httpoptions, /*{headers: this.getHeaders()}*/);
+    return this._http.delete(`${ApiUrl}EventType/Delete/${ID}`, /*httpoptions,*/ {headers: this.getHeaders()});
 
   }
   removeNulls(anyModel){

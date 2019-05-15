@@ -12,14 +12,14 @@ import { identifierName } from '@angular/compiler';
   styleUrls: ['./delete-confirm.component.scss']
 })
 export class DeleteConfirmComponent implements OnInit {
-  eventType: EventType;
+  // eventType: EventType;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _eventTypeServices: EventTypeService, private _ar: ActivatedRoute, private _router: Router) {
-    this._ar.paramMap.subscribe(p => {
-      this._eventTypeServices.getEventTypeByID(p.get('id')).subscribe((singleEventType: EventType) => {
-        this.eventType = singleEventType;
-      });
-    });
+    // this._ar.paramMap.subscribe(p => {
+    //   this._eventTypeServices.getEventTypeByID(p.get('id')).subscribe((singleEventType: EventType) => {
+    //     this.eventType = singleEventType;
+    //   });
+    // });
   }
 
   onDelete(id) {
