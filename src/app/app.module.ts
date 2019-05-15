@@ -37,6 +37,7 @@ import { VacaEventService } from './services/vaca-event.service';
 import { EventTypeDialogComponent } from './components/admin/event-type-dialog/event-type-dialog.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
+import { DeleteConfirmComponent } from './components/admin/delete-confirm/delete-confirm.component';
 
 const routes= [
   { path: 'about', component: AboutComponent},
@@ -79,7 +80,8 @@ const routes= [
     EventDetailComponent,
     AdminComponent,
     NewEventComponent,
-    EventTypeDialogComponent
+    EventTypeDialogComponent,
+    DeleteConfirmComponent
   ],
   entryComponents:[EventTypeDialogComponent],
 

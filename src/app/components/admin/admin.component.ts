@@ -12,6 +12,7 @@ import { VacaEvent } from '../../models/VacaEvent';
 
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { EventTypeDialogComponent } from './event-type-dialog/event-type-dialog.component';
+import { DeleteConfirmComponent } from '../admin/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-admin',
@@ -22,11 +23,11 @@ export class AdminComponent implements OnInit {
 
   constructor(private _eventTypeServices: EventTypeService, private _VacaEventServices: VacaEventService,
      private _vacationServices: VacationService, public dialog: MatDialog, private _ar: ActivatedRoute, private _router: Router) { 
-    this._ar.paramMap.subscribe(p=> {
-      this._eventTypeServices.getEventTypeByID(p.get('id')).subscribe((singleEventType: EventType) =>{
-        this
-      });
-    });
+    // this._ar.paramMap.subscribe(p=> {
+    //   this._eventTypeServices.getEventTypeByID(p.get('id')).subscribe((singleEventType: EventType) =>{
+    //     this.eventType = singleEventType;
+    //   });
+    // });
   }
 
   openDialog() {
@@ -37,10 +38,18 @@ export class AdminComponent implements OnInit {
     });
   }
   
+  openDialog1() {
+    let dialogRef = this.dialog.open(DeleteConfirmComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result: ${result}');
+    });
+  }
+  
   // onDelete() {
-  //   this._eventTypeServices.deleteEventType(this.eventtype.EventTypeID).subscribe(() =>{
+  //   this._eventTypeServices.deleteEventType(this.eventType.EventTypeID).subscribe(() => {
   //     this._router.navigate(['/admin'])
-  //   })
+  //   });
   // }
 
   ngOnInit() {
