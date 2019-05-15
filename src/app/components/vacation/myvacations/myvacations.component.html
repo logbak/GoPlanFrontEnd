@@ -1,3 +1,10 @@
+<div class="sticker-bg">
+  <div id="mask">
+<div class="content-container">
+
+    <h2>
+        My Vacations
+      </h2>
 <a mat-raised-button color="primary"  routerLink="/vacation/new">Create New</a>
 
 <div>
@@ -29,12 +36,12 @@
 
     <ng-container matColumnDef="StartDate">
       <mat-header-cell *matHeaderCellDef> Vacation Start Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.StartDate}} </mat-cell>
+      <mat-cell *matCellDef="let vacation"> {{vacation.StartDate | date:'medium'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="EndDate">
       <mat-header-cell *matHeaderCellDef> Vacation End Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.EndDate}} </mat-cell>
+      <mat-cell *matCellDef="let vacation"> {{vacation.EndDate | date:'medium'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Name">
@@ -70,4 +77,7 @@
     </ng-container> -->
 
   </mat-table>
+</div>
+</div>
+</div>
 </div>

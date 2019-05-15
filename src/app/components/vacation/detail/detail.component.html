@@ -5,7 +5,7 @@
         <h2>
           Vacation Detail/Edit
         </h2>
-        <a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>
+        <a mat-raised-button color="primary" routerLink="/vacation/my-vacations">My Vacations</a>
         <br>
         <hr>
 
@@ -33,7 +33,7 @@
 
                   <div>
                     <mat-form-field>
-                      <input matInput placeholder="{{vacation.StartDate}}" formControlName="StartDate"
+                      <input matInput placeholder="{{vacation.StartDate | date:'medium'}}" formControlName="StartDate"
                         type="datetime-local" />
                       <!-- <label for="">Vacation Start Date:</label>
                         <span>{{vacation.StartDate}}</span> -->
@@ -43,7 +43,7 @@
 
                   <div>
                     <mat-form-field>
-                      <input matInput placeholder="{{vacation.EndDate}}" formControlName="EndDate"
+                      <input matInput placeholder="{{vacation.EndDate | date:'medium'}}" formControlName="EndDate"
                         type="datetime-local" />
                       <!-- <label for="">Vacation End Date:</label>
     <span>{{vacation.EndDate}}</span> -->
@@ -88,17 +88,32 @@
     <span>{{vacation.ID}}</span> -->
                     </mat-form-field>
                   </div>
-
+                  
+                  
+                  
                   <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
                 </form>
-
-
+                
+                
               </div>
             </ng-container>
           </div>
         </div>
       </div>
-
+      
+      <!-- <div formArrayName="Attendees">
+      
+          <h3>Attendees</h3> <button (click)="addAttendees()">Add Attendees</button>
+        
+          <div *ngFor="let address of Attendees.controls; let i=index">
+            
+            <label>
+              Attendees:
+            </label>
+            <input type="text" [formControlName]="i">
+          </div>
+        
+        </div> -->
 
       
       <div class="VacaEventTable">
@@ -115,12 +130,12 @@
           
           <ng-container matColumnDef="StartDate">
             <mat-header-cell *matHeaderCellDef>Start Date</mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate}}</mat-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate | date:'medium'}}</mat-cell>
           </ng-container>
           
           <ng-container matColumnDef="EndDate">
             <mat-header-cell *matHeaderCellDef>End Date</mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate}}</mat-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate | date:'medium'}}</mat-cell>
           </ng-container>
           
           <ng-container matColumnDef="ID">
@@ -135,19 +150,7 @@
             <i class="material-icons">Update</i>
           </mat-cell>
         </ng-container>
-        <!-- <ng-container>
-        <div formArrayName="Attendees">
-            <h3>Aliases</h3> <button (click)="addAlias()">Add Attendees</button>
-          
-            <div *ngFor="let address of aliases.controls; let i=index">
-              
-              <label>
-                Alias:
-                <input type="text" [formControlName]="i">
-              </label>
-            </div>
-          </div>
-        </ng-container> -->
+       
       </mat-table>
     </div>
   </div>
