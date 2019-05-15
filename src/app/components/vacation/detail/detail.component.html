@@ -5,7 +5,7 @@
         <h2>
           Vacation Detail/Edit
         </h2>
-        <a mat-button routerLink="/vacation/my-vacations">Back to My Vacations</a>
+        <a mat-raised-button color="primary" routerLink="/vacation/my-vacations">My Vacations</a>
         <br>
         <hr>
 
@@ -130,12 +130,12 @@
           
           <ng-container matColumnDef="StartDate">
             <mat-header-cell *matHeaderCellDef>Start Date</mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate}}</mat-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate | date:'medium'}}</mat-cell>
           </ng-container>
           
           <ng-container matColumnDef="EndDate">
             <mat-header-cell *matHeaderCellDef>End Date</mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate}}</mat-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate | date:'medium'}}</mat-cell>
           </ng-container>
           
           <ng-container matColumnDef="ID">
