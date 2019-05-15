@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
   }
   
   openDialog1() {
-    let dialogRef = this.dialog.open(DeleteConfirmComponent);
+    let dialogRef = this.dialog.open(DeleteConfirmComponent, {data: {name: 'what'}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result: ${result}');
