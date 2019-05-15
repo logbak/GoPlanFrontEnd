@@ -70,8 +70,8 @@
 
     <ng-container matColumnDef="Delete">
         <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-        <mat-cell *matCellDef="let Vacation">
-          <img class="material-icons" src="../../assets/delete.png" (click)="openDialog1()">
+        <mat-cell *matCellDef="let EventType">
+          <img class="material-icons" src="../../assets/delete.png" (click)="openDialog1(EventType)">
         </mat-cell>
       </ng-container>
 
