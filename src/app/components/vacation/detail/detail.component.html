@@ -127,18 +127,14 @@
 
           <ng-container matColumnDef="ID">
             <mat-header-cell *matHeaderCellDef>EventTypeID</mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}
-              <a mat-raised-button color="primary"
-                routerLink="../{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">Edit</a>
-              <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}">Delete</a>
-            </mat-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}</mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="Update">
+          <ng-container matColumnDef="Details">
             <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent"
-              routerLink="../vacation/{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">
-              <i class="material-icons">Update</i>
+            <mat-cell *matCellDef="let VacaEvent">
+              <i class="material-icons" routerLink="../{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">list_alt</i>
+              <i class="material-icons" routerLink="/vacation/{{vacation.ID}}">delete</i>
             </mat-cell>
           </ng-container>
 

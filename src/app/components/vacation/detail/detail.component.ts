@@ -23,7 +23,7 @@ export class DetailComponent implements OnInit {
   dataSource: MatTableDataSource<VacaEvent>;
 
 
-  columnNames = ['VacaEventName', 'StartDate', 'EndDate', 'ID'];
+  columnNames = ['VacaEventName', 'StartDate', 'EndDate', 'ID', 'Details'];
 
   constructor(private _form: FormBuilder,
     private _activatedRoute: ActivatedRoute,
