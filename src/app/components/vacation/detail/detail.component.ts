@@ -4,7 +4,7 @@ import { VacationService } from 'src/app/services/vacation.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { VacaEdit } from 'src/app/models/VacaEdit';
 
-import { VacaEventService} from 'src/app/services/vaca-event.service';
+import { VacaEventService } from 'src/app/services/vaca-event.service';
 import { VacaEvent } from '../../../models/VacaEvent';
 import { MatTableDataSource } from '@angular/material';
 
@@ -16,87 +16,77 @@ import { FormArray } from '@angular/forms';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  
+
   vacation: VacaEdit;
   editVacationForm: FormGroup;
-  ID: string;
   vacaEvent: VacaEvent;
   dataSource: MatTableDataSource<VacaEvent>;
 
-  
-  columnNames = ['VacaEventName','StartDate', 'EndDate', 'ID'];
-  //fb: any;
+
+  columnNames = ['VacaEventName', 'StartDate', 'EndDate', 'ID'];
 
   constructor(private _form: FormBuilder,
-              private _activatedRoute: ActivatedRoute, 
-              private _vacationService: VacationService,
-              private _router: Router,
-              private _VacaEventServices: VacaEventService) { 
+    private _activatedRoute: ActivatedRoute,
+    private _vacationService: VacationService,
+    private _router: Router,
+    private _VacaEventServices: VacaEventService) {
 
-                this._activatedRoute.paramMap.subscribe(p => {
-                  this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: VacaEdit) =>{
-                    this.vacation = singleVacation;
-                    this.createForm();
-                  });
-                });
-              }
+    this._activatedRoute.paramMap.subscribe(p => {
+      this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: VacaEdit) => {
+        this.vacation = singleVacation;
+        this.createForm();
+      });
+    });
+  }
 
   ngOnInit() {
-    this._VacaEventServices.getVacaEventsByVacation(this.vacation.ID).subscribe((vacaEvent: VacaEvent[]) =>
-    { this.dataSource =  new MatTableDataSource<VacaEvent>(vacaEvent)
-   });
-}
+    this._activatedRoute.paramMap.subscribe(p => {
+      this._VacaEventServices.getVacaEventsByVacation(p.get('id')).subscribe((vacaEvent: VacaEvent[]) => {
+      this.dataSource = new MatTableDataSource<VacaEvent>(vacaEvent)
+      });
+    });
+  }
 
-// createForm() {
-//   this.editVacationForm = this._form.group({
-//     Name: new FormControl(this.vacation.Name),
-//     Description: new FormControl(this.vacation.Description),
-//     ImageSource: new FormControl(this.vacation.ImageSource),
-//     StartDate: new FormControl(this.vacation.StartDate),
-//     EndDate: new FormControl(this.vacation.EndDate),
-//     Attendees: new FormControl(this.vacation.Attendees)
-//   });
-// }
-  
-createForm(){
-this.editVacationForm = this._form.group({
-  Name: new FormControl(this.vacation.Name),
-  Description: new FormControl(this.vacation.Description),
-  ImageSource: new FormControl(this.vacation.ImageSource),
-  StartDate: new FormControl(this.vacation.StartDate),
-  EndDate: new FormControl(this.vacation.EndDate),
-  Attendees: new FormControl(this.vacation.Attendees),
-  //Name: [new FormControl(this.vacation.Name)],
-  //Description: [''],
- 
-  // Attendees: this._form.array([
-  //   this._form.control(`${this.vacation.Attendees}`)
-  // ])
-});
-}
+  createForm() {
+    this.editVacationForm = this._form.group({
+      Name: [`${this.vacation.Name}`],
+      Description: [`${this.vacation.Description}`],
+      ImageSource: [`${this.vacation.ImageSource}`],
+      StartDate: [`${this.vacation.StartDate}`],
+      EndDate: [`${this.vacation.EndDate}`],
+      Attendees: this._form.array([
+        this._form.control('')
+      ])
+    });
+  }
 
-get Attendees() {
-  return this.editVacationForm.get('Attendees') as FormArray;
-}
+  get Attendees() {
+    return this.editVacationForm.get('Attendees') as FormArray;
+  }
 
-addAttendees() {
-  this.Attendees.push(this._form.control(''));
-}
+  addAttendees() {
+    this.Attendees.push(this._form.control(''));
+    console.log(this.Attendees.value);
+  }
+
+  removeAttendee(i) {
+    this.Attendees.removeAt(i);
+  }
 
 
-onSubmit(form){
-  const updateVacation: VacaEdit = {
-    ID: this.vacation.ID,
-    Name: form.value.Name,
-    Description: form.value.Description,
-    ImageSource: form.value.ImageSource,
-    StartDate: form.value.StartDate,
-    EndDate: form.value.EndDate,
-    Attendees: form.value.Attendees
-  };
-  this._vacationService.updateVacation(updateVacation).subscribe(d => {
-    this._router.navigate(['/vacation/my-vacations']);
-  });
+  onSubmit(form) {
+    const updateVacation: VacaEdit = {
+      ID: this.vacation.ID,
+      Name: form.value.Name,
+      Description: form.value.Description,
+      ImageSource: form.value.ImageSource,
+      StartDate: form.value.StartDate,
+      EndDate: form.value.EndDate,
+      Attendees: form.value.Attendees
+    };
+    this._vacationService.updateVacation(updateVacation).subscribe(d => {
+      this._router.navigate(['/vacation/my-vacations']);
+    });
   }
 }
 
