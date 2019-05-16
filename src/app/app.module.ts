@@ -13,7 +13,8 @@ import {
   MatInputModule,
   MatTableModule,
   MatDialogModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -100,7 +101,8 @@ const routes= [
     FlexLayoutModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     AuthService,

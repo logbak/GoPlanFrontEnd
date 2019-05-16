@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VacaEventService } from 'src/app/services/vaca-event.service';
 import { VacaEvent } from 'src/app/models/VacaEvent';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { of } from 'rxjs';
 import { EventTypeService } from 'src/app/services/event-type.service';
 import { EventType } from 'src/app/models/EventType';
 
@@ -17,10 +16,9 @@ export class EventDetailComponent implements OnInit {
   vacaEvent: VacaEvent;
   editEventForm: FormGroup;
   eventID: string;
-  vacaID: string;
+  vacaID: string | number;
   minDate = new Date();
-  options: EventType[];
-  eID: number;
+  options: EventType[]
   currentEventType: string;
 
   constructor(
@@ -35,7 +33,6 @@ export class EventDetailComponent implements OnInit {
         this.vacaEvent = singleEvent;
         if (this.vacaEvent.User == localStorage.getItem('username') || localStorage.getItem('user_role') == "Admin") {
           this.createForm();
-          this.eID = this.vacaEvent.ID;
         }
         else {
           this._router.navigate(['/vacation/my-vacations']);
@@ -45,50 +42,44 @@ export class EventDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.eID);
     this.vacaID = this._activatedRoute.snapshot.paramMap.get('id');
-    this.getOptions();
-    console.log(this.options);
-    this.getCurrentEventTypeName();
-    console.log(this.currentEventType);
+    this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) => {
+      this.options = eventtype;
+      this.options.forEach((e) => {
+        if (e.ID == this.vacaEvent.EventTypeID) {
+          this.currentEventType = e.Name;
+        }
+      });
+    });
   }
 
   createForm() {
     this.editEventForm = this._form.group({
-      EventType: new FormControl(),
+      StartDate: new FormControl(this.vacaEvent.StartDate),
+      EndDate: new FormControl(this.vacaEvent.EndDate),
+      EventType: new FormControl(this.vacaEvent.EventTypeID),
       Name: new FormControl(this.vacaEvent.Name),
       Description: new FormControl(this.vacaEvent.Description),
       LocationName: new FormControl(this.vacaEvent.LocationName),
       GooglePlaceId: new FormControl(this.vacaEvent.GooglePlaceId),
       ImageSource: new FormControl(this.vacaEvent.Imagesource),
-      StartDate: new FormControl(this.vacaEvent.StartDate),
-      EndDate: new FormControl(this.vacaEvent.EndDate),
       Cost: new FormControl(this.vacaEvent.Cost)
     });
   }
 
-  getOptions() {
-    this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) => this.options = eventtype);
-  }
-
-  getCurrentEventTypeName() {
-    this.options.forEach(function (e) {
-      if (e.ID == this.eID) {
-        this.currentEventType = e.Name;
-      }
-    });
-  }
-
   onSubmit(form) {
+    console.log(form.value);
     const updateEvent: VacaEvent = {
-      EventTypeId: form.value.EventTypeID,
+      ID: this.vacaEvent.ID,
+      VacationID: this.vacaEvent.VacationID,
+      StartDate: form.value.StartDate,
+      EndDate: form.value.EndDate,
+      EventTypeID: form.value.EventType,
       Name: form.value.Name,
       Description: form.value.Description,
       LocationName: form.value.LocationName,
       GooglePlaceId: form.value.GooglePlaceId,
       Imagesource: form.value.ImageSource,
-      StartDate: form.value.StartDate,
-      EndDate: form.value.EndDate,
       Cost: form.value.Cost
     };
     this._vacaEventService.updateVacaEvent(updateEvent)

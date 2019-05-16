@@ -1,8 +1,8 @@
 export interface VacaEvent {
     ID?: number;
     User?: string;
-    VacationId?: number;
-    EventTypeId: number;
+    VacationID?: number;
+    EventTypeID: number;
     LocationName?: string;
     GooglePlaceId?: string;
     Name: string;
