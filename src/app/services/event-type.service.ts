@@ -24,6 +24,7 @@ export class EventTypeService {
   getEventTypeByID(ID: string) {
     return this._http.get(`${ApiUrl}EventType/Get/${ID}`, {headers: this.getHeaders()});
   }
+  
   createEventType(eventtype: EventType){
     return this._http.post(`${ApiUrl}EventType/Post`, this.removeNulls(eventtype), { headers: this.getHeaders() });
   }
