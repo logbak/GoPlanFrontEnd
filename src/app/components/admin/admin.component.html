@@ -64,7 +64,7 @@
     <ng-container matColumnDef="Update">
       <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
       <mat-cell *matCellDef="let EventType">
-        <img class="material-icons" src="../../assets/edit.png" >
+        <img class="material-icons" src="../../assets/edit.png" (click)="openDialog2(EventType)">
       </mat-cell>
     </ng-container>
 

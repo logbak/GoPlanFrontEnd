@@ -38,6 +38,7 @@ import { EventTypeDialogComponent } from './components/admin/event-type-dialog/e
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 import { DeleteConfirmComponent } from './components/admin/delete-confirm/delete-confirm.component';
+import { EventTypeEditComponent } from './components/admin/event-type-edit/event-type-edit.component';
 
 const routes= [
   { path: 'about', component: AboutComponent},
@@ -81,7 +82,8 @@ const routes= [
     AdminComponent,
     NewEventComponent,
     EventTypeDialogComponent,
-    DeleteConfirmComponent
+    DeleteConfirmComponent,
+    EventTypeEditComponent
   ],
   entryComponents:[EventTypeDialogComponent, DeleteConfirmComponent],
 

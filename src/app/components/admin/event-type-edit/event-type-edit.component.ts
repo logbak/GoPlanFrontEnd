@@ -5,11 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventTypeService } from 'src/app/services/event-type.service';
 
 @Component({
-  selector: 'app-event-type-dialog',
-  templateUrl: './event-type-dialog.component.html',
-  styleUrls: ['./event-type-dialog.component.scss']
+  selector: 'app-event-type-edit',
+  templateUrl: './event-type-edit.component.html',
+  styleUrls: ['./event-type-edit.component.scss']
 })
-export class EventTypeDialogComponent implements OnInit {
+export class EventTypeEditComponent implements OnInit {
 
   EventTypeForm: FormGroup;
   eventID: number;
@@ -21,11 +21,6 @@ export class EventTypeDialogComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  refresh(): void {
-    
-}
-
   createForm(){
     this.EventTypeForm = this._form.group({
       ID: new FormControl,
@@ -34,9 +29,8 @@ export class EventTypeDialogComponent implements OnInit {
   }
   
   onSubmit(){
-    this._eventTypeServices.createEventType(this.EventTypeForm.value)
+    this._eventTypeServices.updateEventType()
     .subscribe(data => {this._router.navigate(['../admin']);
-    window.location.reload();
   });
   }
 }
