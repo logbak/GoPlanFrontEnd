@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
   editVacationForm: FormGroup;
   vacaEvent: VacaEvent;
   dataSource: MatTableDataSource<VacaEvent>;
-
+  minDate = new Date();
 
   columnNames = ['VacaEventName', 'StartDate', 'EndDate', 'ID', 'Details'];
 
@@ -34,6 +34,7 @@ export class DetailComponent implements OnInit {
     this._activatedRoute.paramMap.subscribe(p => {
       this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: VacaEdit) => {
         this.vacation = singleVacation;
+        console.log(this.vacation);
         this.createForm();
       });
     });
@@ -75,6 +76,7 @@ export class DetailComponent implements OnInit {
 
 
   onSubmit(form) {
+    console.log(form.value);
     const updateVacation: VacaEdit = {
       ID: this.vacation.ID,
       Name: form.value.Name,
