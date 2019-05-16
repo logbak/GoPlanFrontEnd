@@ -34,7 +34,7 @@
               <label for="">Cost:</label>
               <p>{{vacaEvent.Cost}}</p>
 
-              <!-- add rest of details here -->
+            
 
               <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
             </div>
@@ -57,7 +57,7 @@
                   <mat-form-field>
                     <input matInput [min]="minDate" [matDatepicker]="picker2" placeholder="End - {{vacaEvent.EndDate | date:'medium'}}" formControlName="EndDate" type="datetime" />
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                    <mat-datepicker #picker startView="month" [startAt]="minDate"></mat-datepicker>
+                    <mat-datepicker #picker2 startView="month" [startAt]="minDate"></mat-datepicker>
                   </mat-form-field>
                 </div>
 
