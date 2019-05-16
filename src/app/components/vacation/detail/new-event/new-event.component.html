@@ -1,9 +1,9 @@
 <div class="sticker-bg">
   <div id="mask">
     <div class="content-container">
-      <h1>New Event</h1>
-      <p>Placeholder form:</p>
-      <hr>
+        <a mat-raised-button color="primary" routerLink="/vacation/{{this.vacaID}}">Vacation</a>
+      <h2>New Event</h2>
+     
 
       <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacaEventForm">
         <div>
@@ -44,10 +44,9 @@
           </div>
           <!-- <input formControlName="VacationID" type="number" value="{{this.vacaIdNumber}}"/> -->
         </div>
-        <button mat-raised-button class="nav-btn" type="submit">Create Event</button>
+        <button mat-raised-button color="primary" class="nav-btn" type="submit">Save Event</button>
       </form>
 
-      <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to Vacation</a>
     </div>
   </div>
 </div>
