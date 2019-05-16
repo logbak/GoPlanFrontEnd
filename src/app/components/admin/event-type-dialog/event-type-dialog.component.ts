@@ -23,7 +23,7 @@ export class EventTypeDialogComponent implements OnInit {
   }
 
   refresh(): void {
-    window.location.reload();
+    
 }
 
   createForm(){
@@ -36,6 +36,7 @@ export class EventTypeDialogComponent implements OnInit {
   onSubmit(){
     this._eventTypeServices.createEventType(this.EventTypeForm.value)
     .subscribe(data => {this._router.navigate(['../admin']);
+    window.location.reload();
   });
   }
 }

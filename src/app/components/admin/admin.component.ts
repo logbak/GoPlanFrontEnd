@@ -13,6 +13,7 @@ import { VacaEvent } from '../../models/VacaEvent';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { EventTypeDialogComponent } from './event-type-dialog/event-type-dialog.component';
 import { DeleteConfirmComponent } from '../admin/delete-confirm/delete-confirm.component';
+import { EventTypeEditComponent } from './event-type-edit/event-type-edit.component';
 
 @Component({
   selector: 'app-admin',
@@ -40,6 +41,13 @@ export class AdminComponent implements OnInit {
   
   openDialog1(item: EventType) {
     let dialogRef = this.dialog.open(DeleteConfirmComponent, {data: {id: item.ID, name: item.Name}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  openDialog2(item: EventType) {
+    let dialogRef = this.dialog.open(EventTypeEditComponent, {data: {id: item.ID, name: item.Name}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

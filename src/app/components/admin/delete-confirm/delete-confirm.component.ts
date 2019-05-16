@@ -25,6 +25,7 @@ export class DeleteConfirmComponent implements OnInit {
   onDelete(id) {
     this._eventTypeServices.deleteEventType(id).subscribe(() => {
       this._router.navigate(['/admin'])
+      window.location.reload();
     });
   }
 
