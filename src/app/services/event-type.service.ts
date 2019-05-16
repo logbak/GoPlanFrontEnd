@@ -28,8 +28,8 @@ export class EventTypeService {
     return this._http.post(`${ApiUrl}EventType/Post`, this.removeNulls(eventtype), { headers: this.getHeaders() });
   }
 
-  updateEventType(){
-    return this._http.put(`${ApiUrl}EventType/Put`, httpoptions, {headers: this.getHeaders()});
+  updateEventType(eventtype: EventType){
+    return this._http.put(`${ApiUrl}EventType/Put`, {headers: this.getHeaders() });
   }
 
   deleteEventType(ID: number) {

@@ -30,8 +30,8 @@ export class EventTypeEditComponent implements OnInit {
   }
   
   onSubmit(){
-    this._eventTypeServices.updateEventType()
-    .subscribe(data => {this._router.navigate(['../admin']);
-  });
+    // this._eventTypeServices.updateEventType()
+    // .subscribe(data => {this._router.navigate(['../admin']);
+  // });
   }
 }
