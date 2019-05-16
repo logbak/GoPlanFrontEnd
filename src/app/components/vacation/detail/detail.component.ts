@@ -42,7 +42,7 @@ export class DetailComponent implements OnInit {
               }
 
   ngOnInit() {
-    this._VacaEventServices.getVacaEvents().subscribe((vacaEvent: VacaEvent[]) =>
+    this._VacaEventServices.getVacaEventsByVacation(this.vacation.ID).subscribe((vacaEvent: VacaEvent[]) =>
     { this.dataSource =  new MatTableDataSource<VacaEvent>(vacaEvent)
    });
 }

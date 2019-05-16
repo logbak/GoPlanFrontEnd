@@ -118,7 +118,7 @@
       
       <div class="VacaEventTable">
         
-        <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}">Edit</a>
+        <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}/new-event">+ Add Event</a>
         <mat-table #table [dataSource]="dataSource">
           <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
@@ -140,7 +140,10 @@
           
           <ng-container matColumnDef="ID">
             <mat-header-cell *matHeaderCellDef>EventTypeID</mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}</mat-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}
+            <a mat-raised-button color="primary" routerLink="../{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">Edit</a>
+            <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}">Delete</a>
+          </mat-cell>
           </ng-container>
           
           <ng-container matColumnDef="Update">
