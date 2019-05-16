@@ -85,7 +85,7 @@ const routes= [
     DeleteConfirmComponent,
     EventTypeEditComponent
   ],
-  entryComponents:[EventTypeDialogComponent, DeleteConfirmComponent],
+  entryComponents:[EventTypeDialogComponent, DeleteConfirmComponent, EventTypeEditComponent],
 
   imports: [
     BrowserModule,
