@@ -21,22 +21,28 @@ export class EventTypeEditComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _eventTypeServices: EventTypeService, private _form: FormBuilder, private _router: Router, private _ar: ActivatedRoute) {
       this._eventTypeServices.getEventTypeByID(data.id).subscribe((singleEventType: EventType) => {
         this.eventType = singleEventType;
+        console.log(this.eventType)
+        this.createForm();
       });
-    this.createForm();
+    
   }
 
   ngOnInit() {
   }
   createForm() {
     this.EventTypeForm = this._form.group({
-      ID: new FormControl,
-      Name: new FormControl
+      ID: new FormControl (this.eventType.ID),
+      Name: new FormControl(this.eventType.Name)
     });
   }
 
-  onSubmit() {
-    // this._eventTypeServices.updateEventType()
-    // .subscribe(data => {this._router.navigate(['../admin']);
-    // });
+  onSubmit(form) {
+    const updateEventType: EventType = {
+      ID: form.value.ID,
+      Name: form.value.Name
+    };
+    this._eventTypeServices.updateEventType(updateEventType)
+    .subscribe(data => {this._router.navigate(['../admin']);
+    });
   }
 }

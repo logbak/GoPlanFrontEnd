@@ -30,7 +30,7 @@ export class EventTypeService {
   }
 
   updateEventType(eventtype: EventType){
-    return this._http.put(`${ApiUrl}EventType/Put`, {headers: this.getHeaders() });
+    return this._http.put(`${ApiUrl}EventType/Put`, eventtype, {headers: this.getHeaders() });
   }
 
   deleteEventType(ID: number) {

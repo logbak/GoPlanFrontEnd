@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { VacationService } from 'src/app/services/vacation.service';
 import { Vacation } from '../../models/Vacation';
@@ -23,57 +22,53 @@ import { EventTypeEditComponent } from './event-type-edit/event-type-edit.compon
 export class AdminComponent implements OnInit {
 
   constructor(private _eventTypeServices: EventTypeService, private _VacaEventServices: VacaEventService,
-     private _vacationServices: VacationService, public dialog: MatDialog, private _ar: ActivatedRoute, private _router: Router) { 
-    // this._ar.paramMap.subscribe(p=> {
-    //   this._eventTypeServices.getEventTypeByID(p.get('id')).subscribe((singleEventType: EventType) =>{
-    //     this.eventType = singleEventType;
-    //   });
-    // });
+    private _vacationServices: VacationService, public dialog: MatDialog, private _ar: ActivatedRoute, private _router: Router) {
   }
 
   openDialog() {
     let dialogRef = this.dialog.open(EventTypeDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.getEventList();
     });
   }
-  
+
   openDialog1(item: EventType) {
     let dialogRef = this.dialog.open(DeleteConfirmComponent, {data: {type: "eventType", id: item.ID, name: item.Name, from: "admin", vacaID: ""}});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.getEventList();
     });
   }
   openDialog2(item: EventType) {
-    let dialogRef = this.dialog.open(EventTypeEditComponent, {data: {id: item.ID, name: item.Name}});
+    let dialogRef = this.dialog.open(EventTypeEditComponent, { data: { id: item.ID, name: item.Name } });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe( resutlts => {
+      this.getEventList()
+    });
+    // this.getEventList();
+  }
+
+  getEventList() {
+    this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) => {
+      this.dataSource = new MatTableDataSource<EventType>(eventtype)
     });
   }
-  
-  // onDelete() {
-  //   this._eventTypeServices.deleteEventType(this.eventType.EventTypeID).subscribe(() => {
-  //     this._router.navigate(['/admin'])
-  //   });
-  // }
+  getVacationList() {
+    this._vacationServices.getVacations().subscribe((vacation: Vacation[]) => {
+      this.dataSource1 = new MatTableDataSource<Vacation>(vacation)
+    });
+  }
+  getVacaEventList() {
+    this._VacaEventServices.getVacaEvents().subscribe((vacaEvent: VacaEvent[]) => {
+      this.dataSource2 = new MatTableDataSource<VacaEvent>(vacaEvent)
+    });
+  }
 
   ngOnInit() {
-
-    this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) => {
-    this.dataSource = new MatTableDataSource<EventType>(eventtype)
-    });
-
-    this._vacationServices.getVacations().subscribe((vacation: Vacation[]) => {
-    this.dataSource1 = new MatTableDataSource<Vacation>(vacation)
-    });
-
-    this._VacaEventServices.getVacaEvents().subscribe((vacaEvent: VacaEvent[]) => {
-    this.dataSource2 = new MatTableDataSource<VacaEvent>(vacaEvent)
-    });
-
+    this.getEventList();
+    this.getVacationList();
+    this.getVacaEventList();
   }
   columnNames = ['EventTypeID', 'EventTypeName', 'Update']
   columnNames1 = ['User', 'VacationName', 'Update']
