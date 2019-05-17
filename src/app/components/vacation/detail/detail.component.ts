@@ -6,9 +6,10 @@ import { VacaEdit } from 'src/app/models/VacaEdit';
 
 import { VacaEventService } from 'src/app/services/vaca-event.service';
 import { VacaEvent } from '../../../models/VacaEvent';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 
 import { FormArray } from '@angular/forms';
+import { DeleteConfirmComponent } from '../../delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-detail',
@@ -21,7 +22,7 @@ export class DetailComponent implements OnInit {
   editVacationForm: FormGroup;
   vacaEvent: VacaEvent;
   dataSource: MatTableDataSource<VacaEvent>;
-
+  minDate = new Date();
 
   columnNames = ['VacaEventName', 'StartDate', 'EndDate', 'ID', 'Details'];
 
@@ -29,11 +30,13 @@ export class DetailComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _vacationService: VacationService,
     private _router: Router,
-    private _VacaEventServices: VacaEventService) {
+    private _VacaEventServices: VacaEventService,
+    public dialog: MatDialog) {
 
     this._activatedRoute.paramMap.subscribe(p => {
       this._vacationService.getVacationGetByID(p.get('id')).subscribe((singleVacation: VacaEdit) => {
         this.vacation = singleVacation;
+        console.log(this.vacation);
         this.createForm();
       });
     });
@@ -75,6 +78,7 @@ export class DetailComponent implements OnInit {
 
 
   onSubmit(form) {
+    console.log(form.value);
     const updateVacation: VacaEdit = {
       ID: this.vacation.ID,
       Name: form.value.Name,
@@ -86,6 +90,22 @@ export class DetailComponent implements OnInit {
     };
     this._vacationService.updateVacation(updateVacation).subscribe(d => {
       this._router.navigate(['/vacation/my-vacations']);
+    });
+  }
+
+  openDeleteDialogVacaEvent(item: VacaEvent) {
+    let dialogRef = this.dialog.open(DeleteConfirmComponent, {data: {type: "vacaEvent", id: item.ID, name: item.Name, from: "vacation", vacaID: item.VacationID}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDeleteDialogVacation(item: VacaEdit) {
+    let dialogRef = this.dialog.open(DeleteConfirmComponent, {data: {type: "vacation", id: item.ID, name: item.Name, from: "", vacaID: ""}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 }
