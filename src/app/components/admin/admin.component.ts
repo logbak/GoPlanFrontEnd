@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
     let dialogRef = this.dialog.open(EventTypeDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.getEventList();
     });
   }
 
@@ -37,13 +37,16 @@ export class AdminComponent implements OnInit {
     let dialogRef = this.dialog.open(DeleteConfirmComponent, { data: { id: item.ID, name: item.Name } });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      this.getEventList();
     });
   }
   openDialog2(item: EventType) {
     let dialogRef = this.dialog.open(EventTypeEditComponent, { data: { id: item.ID, name: item.Name } });
 
-    //dialogRef.beforeClosed().getEventList();
+    dialogRef.afterClosed().subscribe( resutlts => {
+      this.getEventList()
+    });
+    // this.getEventList();
   }
 
   getEventList() {
