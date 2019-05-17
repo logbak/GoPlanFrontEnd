@@ -33,9 +33,9 @@
 
               <label for="">Cost:</label>
               <p>{{vacaEvent.Cost}}</p>
-
             
-
+              <br>
+              <a mat-button color="warn" id="delete" (click)="openDeleteDialog(vacaEvent)">Delete</a>
               <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
             </div>
           </ng-container>

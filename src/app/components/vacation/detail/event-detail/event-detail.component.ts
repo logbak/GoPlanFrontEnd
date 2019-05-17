@@ -5,6 +5,8 @@ import { VacaEvent } from 'src/app/models/VacaEvent';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { EventTypeService } from 'src/app/services/event-type.service';
 import { EventType } from 'src/app/models/EventType';
+import { DeleteConfirmComponent } from 'src/app/components/delete-confirm/delete-confirm.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-event-detail',
@@ -26,7 +28,8 @@ export class EventDetailComponent implements OnInit {
     private _router: Router,
     private _vacaEventService: VacaEventService,
     private _eventTypeServices: EventTypeService,
-    private _form: FormBuilder) {
+    private _form: FormBuilder,
+    public dialog: MatDialog) {
 
     this._vacaEventService.getVacaEvent(this._activatedRoute.snapshot.paramMap.get('id2'))
       .subscribe((singleEvent: VacaEvent) => {
@@ -87,6 +90,14 @@ export class EventDetailComponent implements OnInit {
         this._router.navigate([`/vacation/${this.vacaID}`]);
       }
       );
+  }
+
+  openDeleteDialog(item: VacaEvent) {
+    let dialogRef = this.dialog.open(DeleteConfirmComponent, {data: {type: "vacaEvent", id: item.ID, name: item.Name, from: "", vacaID: item.VacationID}});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

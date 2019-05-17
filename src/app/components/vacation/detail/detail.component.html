@@ -5,13 +5,11 @@
         <h2>
           Vacation Detail/Edit
         </h2>
-        <a mat-raised-button color="primary" routerLink="/vacation/my-vacations">My Vacations</a>
 
         <div class="detail-edit">
           <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
-            <label for="">Date Created:</label>
+            <label>Date Created:</label>
             <p>{{vacation.CreatedDate | date:'medium'}}</p>
-
             <ng-container>
               <div fxFlex="0 1 calc(50% - 32px)">
 
@@ -32,6 +30,7 @@
 
                 <label for="">Attendees:</label>
                 <p>{{vacation.Attendees}}</p>
+                <a id="back" mat-button routerLink="/vacation/my-vacations">Back to my vacations</a>
               </div>
             </ng-container>
 
@@ -85,21 +84,21 @@
                   </div>
 
                   <h4>Attendees</h4>
-                  <p>{{Attendees.value}}</p>
+                  <br>
                   <div id="AttendeeForm">
                     <div formArrayName="Attendees">
                       <div *ngFor="let address of Attendees.controls; let i=index">
-                        <mat-form-field style="width: 50%;">
+                        <div id="attendeeLine">
                           <input matInput type="text" [formControlName]="i">
-                        </mat-form-field>
-                        <a mat-button color="warn" (click)="removeAttendee(i)">Remove</a>
+                        </div>
+                        <a mat-button color="warn" (click)="removeAttendee(i)">Remove line</a>
                       </div>
                     </div>
                     <a mat-button color="primary" (click)="addAttendees()">Add Attendee</a>
                   </div>
 
-                  <button mat-raised-button class="nav-btn" color="primary" type="submit"
-                    style="float: right">Save</button>
+                  <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
+                  <a mat-button color="warn" (click)="openDeleteDialogVacation(vacation)" style="float: right;">Delete</a>
                 </form>
 
 
@@ -151,7 +150,7 @@
             <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">
               <i class="material-icons" routerLink="../{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">list_alt</i>
-              <i class="material-icons" routerLink="/vacation/{{vacation.ID}}">delete</i>
+              <i class="material-icons" (click)="openDeleteDialogVacaEvent(VacaEvent)">delete</i>
             </mat-cell>
           </ng-container>
 
