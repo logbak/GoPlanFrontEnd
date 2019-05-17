@@ -41,7 +41,6 @@ export class EventTypeEditComponent implements OnInit {
       ID: form.value.ID,
       Name: form.value.Name
     };
-    console.log(form.value.ID)
     this._eventTypeServices.updateEventType(updateEventType)
     .subscribe(data => {this._router.navigate(['../admin']);
     });
