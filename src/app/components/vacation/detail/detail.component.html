@@ -91,10 +91,10 @@
                         <div id="attendeeLine">
                           <input matInput type="text" [formControlName]="i">
                         </div>
-                        <a mat-button color="warn" (click)="removeAttendee(i)">Remove line</a>
+                        <a mat-button (click)="removeAttendee(i)">Remove line</a>
                       </div>
                     </div>
-                    <a mat-button color="primary" (click)="addAttendees()">Add Attendee</a>
+                    <a mat-button (click)="addAttendees()">Add Attendee</a>
                   </div>
 
                   <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
