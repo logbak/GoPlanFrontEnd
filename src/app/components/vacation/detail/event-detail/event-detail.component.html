@@ -1,23 +1,26 @@
 <div class="sticker-bg">
   <div id="mask">
     <div class="content-container" *ngIf="vacaEvent">
-      <br>
+      
       <h2>
-        Event
+          {{vacaEvent.Name}} Event
       </h2>
-      <br>
-      <hr>
-
+      
+      
+      <a mat-raised-button color="primary" routerLink="/vacation/{{this.vacaID}}">Back to Vacation</a>
       <div class="detail-edit">
         <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
           <ng-container>
             <div fxFlex="0 1 calc(50% - 32px)">
 
               <label for="">Start Date:</label>
-              <p>{{vacaEvent.StartDate | date:'medium'}}</p>
+              <p>{{vacaEvent.StartDate | date:'mediumDate'}}</p>
 
               <label for="">End Date:</label>
-              <p>{{vacaEvent.EndDate | date:'medium'}}</p>
+              <p>{{vacaEvent.EndDate | date:'mediumDate'}}</p>
+
+              <label for="">Event Type:</label>
+              <p>{{currentEventType}}</p>
 
               <label for="">Name:</label>
               <p>{{vacaEvent.Name}}</p>
@@ -26,14 +29,14 @@
               <p>{{vacaEvent.Description}}</p>
 
               <label for="">Location:</label>
-              <p>{{vacaEvent.LocationName}}</p>
+              <p><a target="blank" href="https://www.google.com/maps/place/{{vacaEvent.LocationName}}">{{vacaEvent.LocationName}}</a></p>
 
               <label for="">Cost:</label>
-              <p>{{vacaEvent.Cost}}</p>
-
-              <!-- add rest of details here -->
-
+              <p>{{vacaEvent.Cost | currency: '$'}}</p>
+              <br>
+              <a mat-button color="warn" id="delete" (click)="openDeleteDialog(vacaEvent)">Delete</a>
               <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
+
             </div>
           </ng-container>
 
@@ -43,7 +46,9 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Start - {{vacaEvent.StartDate | date:'medium'}}" formControlName="StartDate" type="datetime" />
+                    <input matInput [min]="minDate" [matDatepicker]="picker"
+                      placeholder="Start - {{vacaEvent.StartDate | date:'medium'}}" formControlName="StartDate"
+                      type="datetime" />
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker startView="month" [startAt]="minDate"></mat-datepicker>
                   </mat-form-field>
@@ -52,8 +57,24 @@
 
                 <div>
                   <mat-form-field>
-                    <input matInput placeholder="End - {{vacaEvent.EndDate | date:'medium'}}" formControlName="EndDate" type="datetime" />
+                    <input matInput [min]="minDate" [matDatepicker]="picker2"
+                      placeholder="End - {{vacaEvent.EndDate | date:'medium'}}" formControlName="EndDate"
+                      type="datetime" />
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 startView="month" [startAt]="minDate"></mat-datepicker>
                   </mat-form-field>
+                </div>
+
+
+                <div>
+                    <mat-form-field>
+                        <mat-select placeholder="{{currentEventType}}" formControlName="EventType">
+                          <mat-option>--</mat-option>
+                          <mat-option *ngFor="let eventtype of options" [value]="eventtype.ID">
+                            {{eventtype.Name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
                 </div>
 
 
@@ -91,5 +112,5 @@
           </ng-container>
         </div>
       </div>
-    </div>
   </div>
+</div>

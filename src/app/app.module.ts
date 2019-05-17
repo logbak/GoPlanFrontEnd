@@ -13,7 +13,8 @@ import {
   MatInputModule,
   MatTableModule,
   MatDialogModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +38,7 @@ import { VacaEventService } from './services/vaca-event.service';
 import { EventTypeDialogComponent } from './components/admin/event-type-dialog/event-type-dialog.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
-import { DeleteConfirmComponent } from './components/admin/delete-confirm/delete-confirm.component';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 import { EventTypeEditComponent } from './components/admin/event-type-edit/event-type-edit.component';
 
 const routes= [
@@ -102,7 +103,8 @@ const routes= [
     FlexLayoutModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     AuthService,

@@ -5,24 +5,32 @@
         <h2>
           Vacation Detail/Edit
         </h2>
-        <a mat-raised-button color="primary" routerLink="/vacation/my-vacations">My Vacations</a>
-        <br>
-        <hr>
-
-        <label for="">Date Created:</label>
-        <p>{{vacation.CreatedDate | date:'medium'}}</p>
-        <hr>
 
         <div class="detail-edit">
           <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
+            <label>Date Created:</label>
+            <p>{{vacation.CreatedDate | date:'medium'}}</p>
             <ng-container>
               <div fxFlex="0 1 calc(50% - 32px)">
 
                 <label for="">Start Date:</label>
                 <p>{{vacation.StartDate | date:'medium'}}</p>
 
-                <!-- add rest of details here -->
+                <label for="">End Date:</label>
+                <p>{{vacation.EndDate | date:'medium'}}</p>
 
+                <label for="">Vacation Title:</label>
+                <p>{{vacation.Name}}</p>
+
+                <label for="">Description:</label>
+                <p>{{vacation.Description}}</p>
+
+                <label for="">Location:</label>
+                <p><img src="{{vacation.ImageSource}}" style="max-width: 188px; border-radius: 5px;" /></p>
+
+                <label for="">Attendees:</label>
+                <p>{{vacation.Attendees}}</p>
+                <a id="back" mat-button routerLink="/vacation/my-vacations">Back to my vacations</a>
               </div>
             </ng-container>
 
@@ -33,20 +41,22 @@
 
                   <div>
                     <mat-form-field>
-                      <input matInput placeholder="{{vacation.StartDate | date:'medium'}}" formControlName="StartDate"
-                        type="datetime-local" />
-                      <!-- <label for="">Vacation Start Date:</label>
-                        <span>{{vacation.StartDate}}</span> -->
+                      <input matInput [min]="minDate" [matDatepicker]="picker"
+                        placeholder="Start - {{vacation.StartDate | date:'medium'}}" formControlName="StartDate"
+                        type="datetime" />
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker startView="month" [startAt]="minDate"></mat-datepicker>
                     </mat-form-field>
                   </div>
 
 
                   <div>
                     <mat-form-field>
-                      <input matInput placeholder="{{vacation.EndDate | date:'medium'}}" formControlName="EndDate"
-                        type="datetime-local" />
-                      <!-- <label for="">Vacation End Date:</label>
-    <span>{{vacation.EndDate}}</span> -->
+                      <input matInput [min]="minDate" [matDatepicker]="picker2"
+                        placeholder="End - {{vacation.EndDate | date:'medium'}}" formControlName="EndDate"
+                        type="datetime" />
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2 startView="month" [startAt]="minDate"></mat-datepicker>
                     </mat-form-field>
                   </div>
 
@@ -54,8 +64,6 @@
                   <div>
                     <mat-form-field>
                       <input matInput placeholder="{{vacation.Name}}" formControlName="Name" type="text" />
-                      <!-- <label for="">Vacation Name:</label>
-    <span>{{vacation.Name}}</span> -->
                     </mat-form-field>
                   </div>
 
@@ -64,8 +72,6 @@
                     <mat-form-field>
                       <input matInput placeholder="{{vacation.Description}}" formControlName="Description"
                         type="text" />
-                      <!-- <label for="">Vacation Description:</label>
-    <span>{{vacation.Description}}</span> -->
                     </mat-form-field>
                   </div>
 
@@ -74,85 +80,83 @@
                     <mat-form-field>
                       <input matInput placeholder="{{vacation.ImageSource}}" formControlName="ImageSource"
                         type="text" />
-                      <!-- <label for="">Vacation Image Source:</label>
-    <span><img src="{{vacation.ImageSource}}" /></span> -->
                     </mat-form-field>
                   </div>
 
-
-                  <!-- to do: remake as input that adds to an existing array to submit to the put request -->
-                  <div>
-                    <mat-form-field>
-                      <input matInput placeholder="{{vacation.Attendees}}" formControlName="Attendees" type="text" />
-                      <!-- <label for="">Vacation Attendees:</label>
-    <span>{{vacation.ID}}</span> -->
-                    </mat-form-field>
+                  <h4>Attendees</h4>
+                  <br>
+                  <div id="AttendeeForm">
+                    <div formArrayName="Attendees">
+                      <div *ngFor="let address of Attendees.controls; let i=index">
+                        <div id="attendeeLine">
+                          <input matInput type="text" [formControlName]="i">
+                        </div>
+                        <a mat-button color="warn" (click)="removeAttendee(i)">Remove line</a>
+                      </div>
+                    </div>
+                    <a mat-button color="primary" (click)="addAttendees()">Add Attendee</a>
                   </div>
-                  
-                  
-                  
+
                   <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
+                  <a mat-button color="warn" (click)="openDeleteDialogVacation(vacation)" style="float: right;">Delete</a>
                 </form>
-                
-                
+
+
               </div>
             </ng-container>
           </div>
         </div>
       </div>
-      
-      <!-- <div formArrayName="Attendees">
-      
-          <h3>Attendees</h3> <button (click)="addAttendees()">Add Attendees</button>
-        
-          <div *ngFor="let address of Attendees.controls; let i=index">
-            
-            <label>
-              Attendees:
-            </label>
-            <input type="text" [formControlName]="i">
-          </div>
-        
-        </div> -->
+      <br>
+      <hr>
+      <br>
 
-      
+      <h2>This Vacation's Events</h2>
       <div class="VacaEventTable">
-        
-        <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}">Edit</a>
+
         <mat-table #table [dataSource]="dataSource">
           <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
           <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
-          
+
           <ng-container matColumnDef="VacaEventName">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>
+              <h3>Name</h3>
+            </mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
           </ng-container>
-          
+
           <ng-container matColumnDef="StartDate">
-            <mat-header-cell *matHeaderCellDef>Start Date</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>
+              <h3>Start Date</h3>
+            </mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate | date:'medium'}}</mat-cell>
           </ng-container>
-          
+
           <ng-container matColumnDef="EndDate">
-            <mat-header-cell *matHeaderCellDef>End Date</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>
+              <h3>End Date</h3>
+            </mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate | date:'medium'}}</mat-cell>
           </ng-container>
-          
+
           <ng-container matColumnDef="ID">
-            <mat-header-cell *matHeaderCellDef>EventTypeID</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>
+              <h3>EventTypeID</h3>
+            </mat-header-cell>
             <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}</mat-cell>
           </ng-container>
-          
-          <ng-container matColumnDef="Update">
+
+          <ng-container matColumnDef="Details">
             <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
-            <mat-cell *matCellDef="let VacaEvent"
-            routerLink="../vacation/{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">
-            <i class="material-icons">Update</i>
-          </mat-cell>
-        </ng-container>
-       
-      </mat-table>
+            <mat-cell *matCellDef="let VacaEvent">
+              <i class="material-icons" routerLink="../{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">list_alt</i>
+              <i class="material-icons" (click)="openDeleteDialogVacaEvent(VacaEvent)">delete</i>
+            </mat-cell>
+          </ng-container>
+
+        </mat-table>
+        <a mat-raised-button color="primary" routerLink="/vacation/{{vacation.ID}}/new-event">+ Add Event</a>
+      </div>
     </div>
   </div>
-</div>
 </div>

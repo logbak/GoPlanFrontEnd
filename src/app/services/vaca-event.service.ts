@@ -16,7 +16,7 @@ export class VacaEventService {
     return this._http.get(`${Api_Url}/VacaEvent/Get`, { headers: this.setHeader() });
   }
 
-  getVacaEventsByVacation(vacaId: number) {
+  getVacaEventsByVacation(vacaId: any) {
     return this._http.get(`${Api_Url}/VacaEvent/GetByVaca?vacaId=${vacaId}`, { headers: this.setHeader() });
   }
 
