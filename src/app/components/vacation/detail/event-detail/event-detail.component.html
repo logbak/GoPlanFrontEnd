@@ -1,13 +1,13 @@
 <div class="sticker-bg">
   <div id="mask">
     <div class="content-container" *ngIf="vacaEvent">
-      <br>
+      
       <h2>
-        Event
+          {{vacaEvent.Name}} Event
       </h2>
-      <br>
-      <hr>
-
+      
+      
+      <a mat-raised-button color="primary" routerLink="/vacation/{{this.vacaID}}">Back to Vacation</a>
       <div class="detail-edit">
         <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
           <ng-container>
@@ -29,14 +29,13 @@
               <p>{{vacaEvent.Description}}</p>
 
               <label for="">Location:</label>
-              <p>{{vacaEvent.LocationName}}</p>
+              <p><a target="blank" href="https://www.google.com/maps/place/{{vacaEvent.LocationName}}">{{vacaEvent.LocationName}}</a></p>
 
               <label for="">Cost:</label>
-              <p>{{vacaEvent.Cost}}</p>
+              <p>{{vacaEvent.Cost | currency: '$'}}</p>
 
             
 
-              <a mat-button routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
             </div>
           </ng-container>
 
@@ -112,5 +111,5 @@
           </ng-container>
         </div>
       </div>
-    </div>
   </div>
+</div>

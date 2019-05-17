@@ -1,3 +1,23 @@
+<div class="sticker-bg">
+    <div id="mask">
+      <div class="content-container">
+
+
 <p>
-  contact works!
+  Contact GoPlan
 </p>
+<div class="detail-edit">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <h5><b>Name: </b></h5>
+  <input type='text' formControlName='Name' size='40'><h5>
+    <b>Contact Information:</b></h5>
+    <input type='text' formControlName='Contact' size='40'><h5><b>Message:</b></h5>
+    <textarea formControlName='Message' rows='10' cols='40'></textarea>
+    <br>
+    <input type='submit' value='Submit'>
+  </form>
+</div>
+</div>
+
+</div>
+</div>
