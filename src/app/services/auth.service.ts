@@ -15,7 +15,7 @@ const Api_Url = 'http://goplanapi.azurewebsites.net'
 export class AuthService {
 
   userInfo: Token;
-  public isLoggedIn = new Subject<boolean>();
+  isLoggedIn = new Subject<boolean>();
 
   constructor(
     private _http: HttpClient,
@@ -38,7 +38,7 @@ export class AuthService {
         localStorage.setItem('id_token', token.access_token);
         this.isLoggedIn.next(true);
         this.setCurrentUser();
-        this._router.navigate(['/']);
+        this._router.navigate(['/vacation']);
       });
   }
 
@@ -56,4 +56,5 @@ export class AuthService {
     this._http.post(`${Api_Url}/api/Account/Logout`, { headers: this.setHeader() });
     this._router.navigate(['/login']);
   }
+
 }

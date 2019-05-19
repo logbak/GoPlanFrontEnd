@@ -8,20 +8,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class FooterComponent implements OnInit {
 
-  isAdmin: boolean;
-  isLoggedIn: boolean;
-
   constructor(private _auth: AuthService) { }
 
   ngOnInit() {
-    if(localStorage.getItem('user_role') == "Admin")
-    { this.isAdmin = true; } else { this.isAdmin = false; }
-
-    if(localStorage.getItem('id_token') != null) { this.isLoggedIn = true } else { this.isLoggedIn = false };
   }
 
   onSubmitLogout(){
     this._auth.logout();
-    this.ngOnInit();
   }
 }

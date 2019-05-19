@@ -14,8 +14,7 @@ import {
   MatTableModule,
   MatDialogModule,
   MatNativeDateModule,
-  MatSelectModule,
-  MatPaginatorModule
+  MatSelectModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -92,7 +91,7 @@ const routes= [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
+    RouterModule.forRoot(routes),
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule, 
@@ -105,8 +104,7 @@ const routes= [
     MatDatepickerModule,
     MatDialogModule,
     MatNativeDateModule,
-    MatSelectModule,
-    MatPaginatorModule
+    MatSelectModule
   ],
   providers: [
     AuthService,

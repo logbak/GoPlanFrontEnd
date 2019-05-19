@@ -69,6 +69,7 @@ export class DetailComponent implements OnInit {
 
   addAttendees() {
     this.Attendees.push(this._form.control(''));
+    console.log(this.Attendees.value);
   }
 
   removeAttendee(i) {

@@ -6,7 +6,6 @@ body, html{
     margin: 0;
     padding: 0;
     height: 100%;  
-    width: 100%;
 }
 
 i {
@@ -60,6 +59,17 @@ i {
 
 .mat-form-field{
     width: 100%;
+}
+
+.postcard-bg{
+    background-image: url(src/app/assets/GWR_series_1_postcard_back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.527);
+    padding: 25%;
+    font-size: xx-large;
+    color: saddlebrown;
 }
 
 .sticker-bg{

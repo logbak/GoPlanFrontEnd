@@ -10,7 +10,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class MyvacationsComponent implements OnInit {
 
-    columnNames = ['Edit','StartDate','EndDate','Name','Description','ImageSource'];
+    columnNames = ['CreatedDate','StartDate','EndDate','Name','Description','ImageSource'];
 
     dataSource: MatTableDataSource<Vacation>
   

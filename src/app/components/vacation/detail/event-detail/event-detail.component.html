@@ -5,8 +5,9 @@
       <h2>
           {{vacaEvent.Name}} Event
       </h2>
-      <hr>
       
+      
+      <a mat-raised-button color="primary" routerLink="/vacation/{{this.vacaID}}">Back to Vacation</a>
       <div class="detail-edit">
         <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
           <ng-container>
@@ -103,7 +104,7 @@
                 </div>
 
 
-                <button mat-button class="nav-btn" color="primary" type="submit">Save</button>
+                <button mat-raised-button class="nav-btn" color="primary" type="submit">Save</button>
               </form>
 
 
