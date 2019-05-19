@@ -1,20 +1,26 @@
 {
   "name": "go-plan-front-end",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.15.0"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod",
+    "start": "serve -s dist/GoPlanFrontEnd"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
     "@angular/cdk": "^7.3.7",
+    "@angular/cli": "~7.3.8",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
+    "@angular/compiler-cli": "~7.2.0",
     "@angular/core": "~7.2.0",
     "@angular/flex-layout": "^7.0.0-beta.24",
     "@angular/forms": "~7.2.0",
@@ -26,13 +32,12 @@
     "core-js": "^2.5.4",
     "jwt-decode": "^2.2.0",
     "rxjs": "~6.3.3",
+    "serve": "^11.0.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
-    "@angular/cli": "~7.3.8",
-    "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
