@@ -2,13 +2,17 @@
     background: brown;
 }
 .Logo{
-    margin-top: 1vh;
-    height: 4vh;
-    width: 14vw;
+    vertical-align: bottom;
+    height: 4.5em;
+    margin-right: 1em;
 }
 .NavBarButton{
     color:white;
     border: none;
     background: transparent;
-    margin: 1vw;
+    margin: 2em;
+}
+
+#logout {
+    float: right;
 }

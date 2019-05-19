@@ -1,83 +1,58 @@
 <div class="sticker-bg">
   <div id="mask">
-<div class="content-container">
+    <div class="content-container">
 
-    <h2>
+      <h2>
         My Vacations
       </h2>
-<a mat-raised-button color="primary"  routerLink="/vacation/new">Create New</a>
+      <a mat-button color="primary" routerLink="/vacation/new">Create New</a>
 
-<div>
-  <mat-table #table [dataSource]="dataSource">
-    <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
-    
-    <ng-container matColumnDef="buttons">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let vacation">
-        <i mat-icon class="material-icons" routerLink="/vacation/detail/{{vacation.ID}}">Edit</i>
-        <a mat-raised-button color="primary"  routerLink="/vacation/detail/{{vacation.ID}}">Edit</a>
-      </mat-cell>
-    </ng-container>
+      <div>
+        <mat-table #table [dataSource]="dataSource">
+          <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
 
-    <ng-container matColumnDef="ID">
-      <mat-header-cell *matHeaderCellDef> Vacation ID#</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.ID}} </mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="Edit">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let vacation">
+              <a mat-button color="primary" routerLink="/vacation/{{vacation.ID}}">Edit</a>
+            </mat-cell>
+          </ng-container>
 
+          <ng-container matColumnDef="StartDate">
+            <mat-header-cell *matHeaderCellDef> Vacation Start Date</mat-header-cell>
+            <mat-cell *matCellDef="let vacation"> {{vacation.StartDate | date:'medium'}} </mat-cell>
+          </ng-container>
 
-    <ng-container matColumnDef="CreatedDate">
-      <mat-header-cell *matHeaderCellDef> Vacation Created Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> <!--{{vacation.CreatedDate}} 
-           <i mat-icon class="material-icons" routerLink="/vacation/detail/{{vacation.ID}}">Edit</i> -->
-          <a mat-raised-button color="primary"  routerLink="/vacation/{{vacation.ID}}">Edit</a>
-      </mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="EndDate">
+            <mat-header-cell *matHeaderCellDef> Vacation End Date</mat-header-cell>
+            <mat-cell *matCellDef="let vacation"> {{vacation.EndDate | date:'medium'}} </mat-cell>
+          </ng-container>
 
-    <ng-container matColumnDef="StartDate">
-      <mat-header-cell *matHeaderCellDef> Vacation Start Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.StartDate | date:'medium'}} </mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef> Vacation Name</mat-header-cell>
+            <mat-cell *matCellDef="let vacation"> {{vacation.Name}} </mat-cell>
+          </ng-container>
 
-    <ng-container matColumnDef="EndDate">
-      <mat-header-cell *matHeaderCellDef> Vacation End Date</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.EndDate | date:'medium'}} </mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="Description">
+            <mat-header-cell *matHeaderCellDef> Vacation Description</mat-header-cell>
+            <mat-cell *matCellDef="let vacation"> {{vacation.Description}} </mat-cell>
+          </ng-container>
 
-    <ng-container matColumnDef="Name">
-      <mat-header-cell *matHeaderCellDef> Vacation Name</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.Name}} </mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="TotalCost">
+            <mat-header-cell *matHeaderCellDef> Vacation Total Cost</mat-header-cell>
+            <mat-cell *matCellDef="let vacation"> {{vacation.TotalCost}} </mat-cell>
+          </ng-container>
 
-    <ng-container matColumnDef="Description">
-      <mat-header-cell *matHeaderCellDef> Vacation Description</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.Description}} </mat-cell>
-    </ng-container>
+          <ng-container matColumnDef="ImageSource">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let vacation"> <img src="{{vacation.ImageSource}}"
+                style="width:100%;border-radius:10px;" />
+            </mat-cell>
+          </ng-container>
 
-    <ng-container matColumnDef="TotalCost">
-      <mat-header-cell *matHeaderCellDef> Vacation Total Cost</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.TotalCost}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="ImageSource">
-      <mat-header-cell *matHeaderCellDef> Vacation Image Source</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> <img src="{{vacation.ImageSource}}" style="width:150px;border-radius:10px;" />
-        <!-- <div><img src="http://stem.x10host.com/lc.jpg" /></div> -->
-      </mat-cell>
-    </ng-container>
-    
-    <!-- <ng-container matColumnDef="EvenList">
-      <mat-header-cell *matHeaderCellDef> Vacation EvenList</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.EvenList}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="Attendees">
-      <mat-header-cell *matHeaderCellDef> Vacation Attendees</mat-header-cell>
-      <mat-cell *matCellDef="let vacation"> {{vacation.Attendees}} </mat-cell>
-    </ng-container> -->
-
-  </mat-table>
-</div>
-</div>
-</div>
+        </mat-table>
+      </div>
+    </div>
+  </div>
 </div>

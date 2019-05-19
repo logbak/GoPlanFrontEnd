@@ -1,11 +1,11 @@
 <nav class="NavBar">
-  <img class="Logo" routerLink="/" src="../../../assets/goplan-logo.svg">
-  <button class="NavBarButton" routerLink="/vacation">Vacation</button>
+  <img class="Logo" routerLink="/" src="../../../assets/goplan-logo-white.svg">
+  <button class="NavBarButton" routerLink="/vacation/new">New Vacation</button>
   <button class="NavBarButton" routerLink="/vacation/my-vacations">My Vacations</button>
   <button class="NavBarButton" routerLink="/contact">Contact</button>
   <button class="NavBarButton" routerLink="/about">About</button>
-  <button class="NavBarButton" routerLink="/admin">Admin Portal</button>
-  <button class="NavBarButton" (click)="onSubmitLogout()">Logout</button>
+  <button *ngIf="isAdmin" class="NavBarButton" routerLink="/admin">Admin Portal</button>
+  <button *ngIf="isLoggedIn" id="logout" class="NavBarButton" (click)="onSubmitLogout()">Logout</button>
 </nav>
 
 
