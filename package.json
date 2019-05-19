@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --prod",
-    "start": "serve -s dist/go-plan-front-end"
+    "start": "serve -s dist/goPlanFrontEnd"
   },
   "private": true,
   "dependencies": {
