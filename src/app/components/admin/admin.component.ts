@@ -42,6 +42,7 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator.toArray()[0];
+    console.log(this.dataSource)
     this.dataSource1.paginator = this.paginator.toArray()[1];
     this.dataSource2.paginator = this.paginator.toArray()[2];
   }
@@ -70,6 +71,14 @@ export class AdminComponent implements OnInit, AfterViewInit {
   }
   openDialog3(item: Vacation) {
     let dialogRef = this.dialog.open(DeleteConfirmComponent, { data: { type: "vacation", id: item.ID, name: item.Name, from: "admin", vacaID: "" } });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getEventList();
+    });
+  }
+  openDialog4(item: VacaEvent) {
+    console.log(item)
+    let dialogRef = this.dialog.open(DeleteConfirmComponent, { data: { type: "vacaEvent", id: item.ID, name: item.Name, from: "admin", vacaID: "" } });
 
     dialogRef.afterClosed().subscribe(result => {
       this.getEventList();
