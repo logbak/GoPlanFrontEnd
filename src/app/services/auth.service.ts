@@ -47,6 +47,7 @@ export class AuthService {
       .subscribe((userRole: UserInfo) => {
         localStorage.setItem('user_role', userRole.Role);
         localStorage.setItem('username', userRole.Username);
+        window.location.reload();
       });
   }
 
