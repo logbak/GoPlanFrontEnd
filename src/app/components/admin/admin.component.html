@@ -27,7 +27,7 @@
             <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
             <mat-cell *matCellDef="let Vacation">
               <i class="material-icons" routerLink="../vacation/{{Vacation.ID}}">edit</i>
-              <i class="material-icons" >delete</i>
+              <i class="material-icons" (click)="openDialog3(Vacation)">delete</i>
             </mat-cell>
           </ng-container>
 
@@ -103,7 +103,7 @@
         </mat-table>
       </div>
       
-      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25]"></mat-paginator>
+      <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25]"></mat-paginator> -->
     </div>
   </div>
 </div>

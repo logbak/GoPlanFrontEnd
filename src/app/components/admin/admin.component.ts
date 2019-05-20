@@ -68,6 +68,13 @@ export class AdminComponent implements OnInit, AfterViewInit {
       this.getEventList()
     });
   }
+  openDialog3(item: Vacation) {
+    let dialogRef = this.dialog.open(DeleteConfirmComponent, { data: { type: "vacation", id: item.ID, name: item.Name, from: "admin", vacaID: "" } });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getEventList();
+    });
+  }
 
   getEventList() {
     this._eventTypeServices.getEventTypeList().subscribe((eventtype: EventType[]) => {

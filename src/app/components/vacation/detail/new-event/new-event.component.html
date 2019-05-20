@@ -1,12 +1,21 @@
 <div class="sticker-bg">
   <div id="mask">
     <div class="content-container">
-        <a mat-raised-button color="primary" routerLink="/vacation/{{this.vacaID}}">Vacation</a>
       <h2>New Event</h2>
-     
+
 
       <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacaEventForm">
         <div>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Event Type" formControlName="EventTypeID" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let eventtype of options" [value]="eventtype.ID">
+                  {{eventtype.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
           <div>
             <mat-form-field>
               <input matInput placeholder="Name" formControlName="Name" type="Name" required />
@@ -14,7 +23,7 @@
           </div>
           <div>
             <mat-form-field>
-              <input matInput placeholder="Description" formControlName="Description" type="Description" required/>
+              <input matInput placeholder="Description" formControlName="Description" type="Description" required />
             </mat-form-field>
           </div>
           <div>
@@ -42,9 +51,9 @@
               <input matInput placeholder="Cost" formControlName="Cost" type="number" />
             </mat-form-field>
           </div>
-          <!-- <input formControlName="VacationID" type="number" value="{{this.vacaIdNumber}}"/> -->
         </div>
-        <button mat-raised-button color="primary" class="nav-btn" type="submit">Save Event</button>
+        <button mat-button color="primary" class="nav-btn" type="submit">Save Event</button>
+        <a mat-button color="primary" routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
       </form>
 
     </div>
