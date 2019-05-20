@@ -15,7 +15,8 @@ import {
   MatDialogModule,
   MatNativeDateModule,
   MatSelectModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatCardModule
  } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -106,7 +107,8 @@ const routes= [
     MatDialogModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule
   ],
   providers: [
     AuthService,
