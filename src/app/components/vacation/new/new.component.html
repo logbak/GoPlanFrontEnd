@@ -18,11 +18,6 @@
           </div>
           <div>
             <mat-form-field>
-              <input matInput placeholder="LocationName" formControlName="LocationName" type="LocationName" required />
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
               <input matInput placeholder="ImageSource" formControlName="ImageSource" type="url" />
             </mat-form-field>
           </div>
@@ -35,6 +30,19 @@
             <mat-form-field>
               <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime" />
             </mat-form-field>
+          </div>
+          <h4>Attendees</h4>
+          <br>
+          <div id="AttendeeForm">
+            <div formArrayName="Attendees">
+              <div *ngFor="let address of Attendees.controls; let i=index">
+                <div id="attendeeLine">
+                  <input matInput type="text" [formControlName]="i">
+                </div>
+                <a mat-button (click)="removeAttendee(i)">Remove line</a>
+              </div>
+            </div>
+            <a mat-button (click)="addAttendees()">Add Attendee</a>
           </div>
 
         </div>

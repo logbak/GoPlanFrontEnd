@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VacationService } from 'src/app/services/vacation.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class NewComponent implements OnInit {
   vacationForm: FormGroup;
  
 
-  constructor(private _vacationService: VacationService, private _form: FormBuilder, private _router: Router, private _route: ActivatedRoute) { 
+  constructor(private _vacationService: VacationService, private _form: FormBuilder, private _router: Router) { 
     this.createForm();
   }
 
@@ -24,17 +24,27 @@ export class NewComponent implements OnInit {
 
   createForm() {
     this.vacationForm = this._form.group({
-    
-      Name: new FormControl,
-      Description: new FormControl,
-      LocationName: new FormControl,
-      GooglePlaceID: new FormControl,
-      ImageSource: new FormControl,
-      StartDate: new FormControl,
-      EndDate: new FormControl
-    });
+      Name: [''],
+      Description: [''],
+      ImageSource: [''],
+      StartDate: [''],
+      EndDate: [''],
+      Attendees: this._form.array([
+        this._form.control('')
+      ])
+    });    
+  }
 
-    
+  get Attendees() {
+    return this.vacationForm.get('Attendees') as FormArray;
+  }
+
+  addAttendees() {
+    this.Attendees.push(this._form.control(''));
+  }
+
+  removeAttendee(i) {
+    this.Attendees.removeAt(i);
   }
   
   onSubmit() {
