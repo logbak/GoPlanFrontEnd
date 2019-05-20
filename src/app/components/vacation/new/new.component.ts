@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class NewComponent implements OnInit {
 
   vacationForm: FormGroup;
- 
+  minDate = new Date();
 
   constructor(private _vacationService: VacationService, private _form: FormBuilder, private _router: Router) { 
     this.createForm();
