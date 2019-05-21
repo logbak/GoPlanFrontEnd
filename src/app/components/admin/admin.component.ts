@@ -24,9 +24,9 @@ export class AdminComponent implements OnInit, AfterViewInit {
   columnNames1 = ['User', 'VacationName', 'Update']
   columnNames2 = ['EventID', 'VacationId', 'VacaEventName', 'Update'];
   
-  dataSource: MatTableDataSource<EventType>;
-  dataSource1: MatTableDataSource<Vacation>;
-  dataSource2: MatTableDataSource<VacaEvent>;
+  dataSource  = new MatTableDataSource<EventType>();
+  dataSource1 = new  MatTableDataSource<Vacation>();
+  dataSource2 = new MatTableDataSource<VacaEvent>();
   
   @ViewChildren(MatPaginator) paginator = new QueryList<MatPaginator>();
 
@@ -42,7 +42,6 @@ export class AdminComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator.toArray()[0];
-    console.log(this.dataSource)
     this.dataSource1.paginator = this.paginator.toArray()[1];
     this.dataSource2.paginator = this.paginator.toArray()[2];
   }

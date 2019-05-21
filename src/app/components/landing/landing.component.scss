@@ -7,9 +7,63 @@
     padding: 25%;
 }
 
+.postcard-bg-front{
+    background-image: url(src/app/assets/postcard-front.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.527);
+    padding: 25%;
+}
+    .postcard-bg-front a {
+        color: white;
+    }
+    .postcard-bg-front .front-mask {
+        border-radius: 60%;
+        background-color: rgba(0, 0, 0, 0.267);
+    }
+
 a {
     display: block;
     text-align: center;
     color: saddlebrown;
     font-size: xx-large;
+}
+
+#flip-click {
+    font-size: large;
+    cursor: pointer;
+}
+
+.flip-container {
+	perspective: 800px;
+}
+    #flip-toggle.flip .flipper {
+        transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 100%;
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
 }
