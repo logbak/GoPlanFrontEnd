@@ -1,2 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Oswald|Permanent+Marker|Shadows+Into+Light');
+
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100%;  
+    width: 100%;
+}
+
+i {
+    cursor: pointer;
+}
+
+.container-main{
+    min-height:100%;
+    position:relative;
+    background-image: url(src/app/assets/sebastian-pena-lambarri-1218041-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Oswald', sans-serif; 
+}
+
+.route-container{
+    padding: 5% 25% 10% 25%;
+    justify-content: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.route-container-wide{
+    padding: 5% 10% 10% 10%;
+    justify-content: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+@media (max-width: 1091px){
+    .route-container{
+        padding: 5% 5% 10% 5%;
+    }    
+}
+
+.footer{
+    background-color: rgb(43, 43, 43);
+    padding: 0 10% 0 10%;
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    color: white;
+}
+    .footer p h1, h2, h3, h4, h5{
+        margin: 0;
+    }
+
+.mat-table, .mat-form-field{
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: larger;
+}
+
+.mat-form-field{
+    width: 100%;
+}
+
+.sticker-bg{
+    background-image: url(src/app/assets/travel-background-1481907912dGp.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.527);
+    border-radius: 25px;
+}
+
+#mask{
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.116);
+    padding: 5%;
+}
+
+.content-container{
+    border-radius: 5px;
+    background-color: seashell;
+    margin: 5%;
+    padding: 2%;
+}
+    .content-container h2{
+        text-align: center;
+    }
+    .content-container .mat-button {
+        background-color: darkslateblue;
+        color: white;
+    }
+.detail-edit{
+    padding: 0 5% 0 5% ;
+}

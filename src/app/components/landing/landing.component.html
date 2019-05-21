@@ -1,3 +1,23 @@
-<p>
-  landing works!
-</p>
+<div id="flip-toggle" class="flip-container">
+  <div class="flipper">
+    <div class="front">
+      <div class="postcard-bg">
+        <br>
+        <br>
+        <a routerLink="/vacation/my-vacations">My Vacations</a>
+        <br>
+        <a id="flip-click" onclick="document.querySelector('#flip-toggle').classList.toggle('flip')">click to flip!</a>
+      </div>
+    </div>
+    <div class="back">
+      <div class="postcard-bg-front">
+        <div class="front-mask">
+        <br>
+        <a routerLink="/vacation/new">New Vacation</a>
+        <br>
+        <a id="flip-click" onclick="document.querySelector('#flip-toggle').classList.toggle('flip')">click to flip!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

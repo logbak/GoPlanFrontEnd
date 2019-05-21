@@ -1,3 +1,111 @@
-<p>
-  admin works!
-</p>
+<div class="sticker-bg">
+  <div id="mask">
+    <div class="content-container">
+      <h1>Admin Portal</h1>
+      <hr>
+
+      <div class="TableHeader">
+        <h3 class="TableHeaderText">Vacations</h3>
+      </div>
+
+      <div class="VacationTable">
+        <mat-table #table [dataSource]="dataSource1">
+          <mat-header-row *matHeaderRowDef="columnNames1"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames1;"></mat-row>
+
+          <ng-container matColumnDef="User">
+            <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+            <mat-cell *matCellDef="let Vacation">{{Vacation.User}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="VacationName">
+            <mat-header-cell *matHeaderCellDef>Vacation Name</mat-header-cell>
+            <mat-cell *matCellDef="let Vacation">{{Vacation.Name}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Update">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+            <mat-cell *matCellDef="let Vacation">
+              <i class="material-icons" routerLink="../vacation/{{Vacation.ID}}">edit</i>
+              <i class="material-icons" (click)="openDialog3(Vacation)">delete</i>
+            </mat-cell>
+          </ng-container>
+
+        </mat-table>
+        <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25]" [length]="dataSource1.data.length"></mat-paginator> -->
+      </div>
+
+
+      <div class="TableHeader">
+        <h3 class="TableHeaderText">Event Types</h3>
+      </div>
+
+      <div class="EventTypeTable">
+        <mat-table #table [dataSource]="dataSource">
+          <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+
+          <ng-container matColumnDef="EventTypeID">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize">ID</mat-header-cell>
+            <mat-cell *matCellDef="let EventType"> {{EventType.ID}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="EventTypeName">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let EventType"> {{EventType.Name}} </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Update">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+            <mat-cell *matCellDef="let EventType">
+              <i class="material-icons" (click)="openDialog()">add</i>
+              <i class="material-icons" (click)="openDialog2(EventType)">edit</i>
+              <i class="material-icons" (click)="openDialog1(EventType)">delete</i>
+            </mat-cell>
+          </ng-container>
+
+        </mat-table>
+        <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25]" [length]="dataSource.data.length"></mat-paginator> -->
+      </div>
+
+
+      <div class="TableHeader">
+        <h3 class="TableHeaderText">Vacation Events</h3>
+      </div>
+
+      <div class="VacaEventTable">
+        <mat-table #table [dataSource]="dataSource2">
+          <mat-header-row *matHeaderRowDef="columnNames2"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames2;"></mat-row>
+
+          <ng-container matColumnDef="EventID">
+            <mat-header-cell *matHeaderCellDef>Event ID</mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.ID}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="VacationId">
+            <mat-header-cell *matHeaderCellDef>Vacation ID</mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.VacationID}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="VacaEventName">
+            <mat-header-cell *matHeaderCellDef>Event Name</mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Update">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">
+              <i class="material-icons" routerLink="/vacation/{{VacaEvent.VacationID}}/detail/{{VacaEvent.ID}}">edit</i>
+              <i class="material-icons" (click)="openDialog4(VacaEvent)">delete</i>
+            </mat-cell>
+          </ng-container>
+
+        </mat-table>
+        <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25]" [length]="dataSource2.data.length"></mat-paginator> -->
+      </div>
+      
+    </div>
+  </div>
+</div>

@@ -1,3 +1,61 @@
-<p>
-  new-event works!
-</p>
+<div class="sticker-bg">
+  <div id="mask">
+    <div class="content-container">
+      <h2>New Event</h2>
+
+
+      <form #f="ngForm" (ngSubmit)="onSubmit()" [formGroup]="vacaEventForm">
+        <div>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Event Type" formControlName="EventTypeID" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let eventtype of options" [value]="eventtype.ID">
+                  {{eventtype.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Name" formControlName="Name" type="Name" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Description" formControlName="Description" type="Description" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="LocationName" formControlName="LocationName" type="LocationName" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="ImageSource" formControlName="ImageSource" type="url" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="StartDate" formControlName="StartDate" type="datetime" required />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="EndDate" formControlName="EndDate" type="datetime" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Cost" formControlName="Cost" type="number" />
+            </mat-form-field>
+          </div>
+        </div>
+        <button mat-button color="primary" class="nav-btn" type="submit">Save Event</button>
+        <a mat-button color="primary" routerLink="/vacation/{{this.vacaID}}">Back to vacation</a>
+      </form>
+
+    </div>
+  </div>
+</div>

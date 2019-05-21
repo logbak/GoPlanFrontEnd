@@ -1,3 +1,163 @@
-<p>
-  detail works!
-</p>
+<div class="sticker-bg">
+  <div id="mask">
+    <div class="content-container" *ngIf="vacation">
+      <div *ngIf="vacation">
+        <h2>
+          {{vacation.Name}}
+        </h2>
+        <hr>
+
+        <div class="detail-edit">
+          <div fxLayout="row wrap" fxLayoutGap="10%" fxLayoutAlign="flex-start">
+            <label>Date Created:</label>
+            <p>{{vacation.CreatedDate | date:'medium'}}</p>
+            <ng-container>
+              <div fxFlex="0 1 calc(50% - 32px)">
+
+                <label for="">Start Date:</label>
+                <p>{{vacation.StartDate | date:'medium'}}</p>
+
+                <label for="">End Date:</label>
+                <p>{{vacation.EndDate | date:'medium'}}</p>
+
+                <label for="">Vacation Title:</label>
+                <p>{{vacation.Name}}</p>
+
+                <label for="">Description:</label>
+                <p>{{vacation.Description}}</p>
+
+                <label for="">Location:</label>
+                <p><img src="{{vacation.ImageSource}}" style="max-width: 188px; border-radius: 5px;" /></p>
+
+                <label for="">Attendees:</label>
+                <p>{{vacation.Attendees}}</p>
+                <a id="back" mat-button routerLink="/vacation/my-vacations">Back to my vacations</a>
+              </div>
+            </ng-container>
+
+            <ng-container>
+              <div fxFlex="0 1 calc(50% - 32px)">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="editVacationForm">
+
+
+                  <div>
+                    <mat-form-field>
+                      <input matInput [min]="minDate" [matDatepicker]="picker"
+                        placeholder="Start - {{vacation.StartDate | date:'medium'}}" formControlName="StartDate"
+                        type="datetime" />
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker startView="month" [startAt]="minDate"></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div>
+                    <mat-form-field>
+                      <input matInput [min]="minDate" [matDatepicker]="picker2"
+                        placeholder="End - {{vacation.EndDate | date:'medium'}}" formControlName="EndDate"
+                        type="datetime" />
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2 startView="month" [startAt]="minDate"></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div>
+                    <mat-form-field>
+                      <input matInput placeholder="{{vacation.Name}}" formControlName="Name" type="text" />
+                    </mat-form-field>
+                  </div>
+
+
+                  <div>
+                    <mat-form-field>
+                      <input matInput placeholder="{{vacation.Description}}" formControlName="Description"
+                        type="text" />
+                    </mat-form-field>
+                  </div>
+
+
+                  <div>
+                    <mat-form-field>
+                      <input matInput placeholder="{{vacation.ImageSource}}" formControlName="ImageSource"
+                        type="text" />
+                    </mat-form-field>
+                  </div>
+
+                  <h4>Attendees</h4>
+                  <br>
+                  <div id="AttendeeForm">
+                    <div formArrayName="Attendees">
+                      <div *ngFor="let address of Attendees.controls; let i=index">
+                        <div id="attendeeLine">
+                          <input matInput type="text" [formControlName]="i">
+                        </div>
+                        <a mat-button (click)="removeAttendee(i)">Remove line</a>
+                      </div>
+                    </div>
+                    <a mat-button (click)="addAttendees()">Add Attendee</a>
+                  </div>
+
+                  <button mat-button class="nav-btn" color="primary" type="submit">Save</button>
+                  <a mat-button color="warn" (click)="openDeleteDialogVacation(vacation)" style="float: right;">Delete</a>
+                </form>
+
+
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <br>
+
+      <h2>This Vacation's Events</h2>
+      <div class="VacaEventTable">
+
+        <mat-table #table [dataSource]="dataSource">
+          <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+
+          <ng-container matColumnDef="VacaEventName">
+            <mat-header-cell *matHeaderCellDef>
+              <h3>Name</h3>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.Name}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="StartDate">
+            <mat-header-cell *matHeaderCellDef>
+              <h3>Start Date</h3>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.StartDate | date:'medium'}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="EndDate">
+            <mat-header-cell *matHeaderCellDef>
+              <h3>End Date</h3>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EndDate | date:'medium'}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ID">
+            <mat-header-cell *matHeaderCellDef>
+              <h3>EventTypeID</h3>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">{{VacaEvent.EventTypeID}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Details">
+            <mat-header-cell *matHeaderCellDef class="matColumnSize"></mat-header-cell>
+            <mat-cell *matCellDef="let VacaEvent">
+              <i class="material-icons" routerLink="../{{VacaEvent.VacationId}}/detail/{{VacaEvent.ID}}">list_alt</i>
+              <i class="material-icons" (click)="openDeleteDialogVacaEvent(VacaEvent)">delete</i>
+            </mat-cell>
+          </ng-container>
+
+        </mat-table>
+        <a mat-button color="primary" routerLink="/vacation/{{vacation.ID}}/new-event">Add Event</a>
+      </div>
+    </div>
+  </div>
+</div>
